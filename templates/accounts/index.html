@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<section id="hero" class="d-flex align-items-center bg-light" style="padding-top: 10px;">
+
+    <div class="container">
+        <div class="row" style="padding-left: 10px;">
+            <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+
+
+                <h1>Assignment</h1>
+
+                <h2>Django Sports League Ranking Table by Akshara Sadheesh</h2>
+                
+
+
+                <div class="d-flex">
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-6 order-2 order-lg-2 hero-img" style="padding-top: 30px;">
+
+                {% if user.is_authenticated %}
+
+                {% else %}
+
+                <div class="card" style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);">
+
+                    <div class="card-body">
+                        <!--Alerts-->
+                        {% include 'partials/_alerts.html' %}
+                        <form action="#" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input placeholder="First Name" type="text" name="first_name" class="form-control"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <input placeholder="Last Name" type="text" name="last_name" class="form-control"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <input placeholder="Username" type="text" name="username" class="form-control"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <input placeholder="Email" type="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <input placeholder="Password" type="password" name="password" class="form-control"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <input placeholder="Confirm Password" type="password" name="password2"
+                                    class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Register" class="btn btn-get-started btn-block">
+                            </div>
+
+                        </form>
+                        <div class="footer" style="gap:22em;"><a href="{% url 'login' %}"><span class="btn" style="float: left; font-size: smaller;">Already have an account? Log In</span></a></div>
+                    </div>
+                </div>
+
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

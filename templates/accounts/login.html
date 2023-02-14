@@ -1,0 +1,55 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<section id="login" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+
+          <center><img style="max-width: 140px; padding-bottom: 10px; object-fit: scale-down;"
+            src="{% static 'img/tigerlab.png' %}"></center>
+          <div style="padding-bottom: 10px;" class="container">
+            <center>
+              <h4><b>tigerlab assignment</b></h4>
+            </center>
+            <center>
+              <h5>check out the app</h5>
+            </center>
+         
+          </div>
+          <br>
+    
+          <div class="card" style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);">
+       
+            <div class="card-body">
+              <!--Alerts-->
+              {% include 'partials/_alerts.html' %}
+              <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                  <input placeholder="Username" type="text" name="username" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                  <input placeholder="Password" type="password" name="password" class="form-control" required>
+                  <ion-icon class="show-hide" name="eye-outline"></ion-icon>
+                </div>
+
+                <input type="submit" value="Login" class="btn btn-block">
+              </form>
+           
+
+              <div class="footer" style="gap:22em;"><a href="{% url 'index' %}"><span class="btn" style="float: left; font-size: smaller;">Sign Up</span></a><a href="#"><span class="btn" style="float: right; font-size: smaller;">Forgot Password?</span></a></div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}

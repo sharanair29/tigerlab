@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="bg-light py-5 text-black">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">Dashboard</h1>
+          <p class="lead">Welcome {{request.user.username}}</p>
+          {% include 'partials/_alerts.html' %}
+        </div>
+      </div>
+      <hr class="solid">
+    </div>
+  </section>
+
+
+  <section id="dashboard" class="bg-light py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          
+  
+          <table class="table">
+            <thead>
+              <tr>
+                
+                <th scope="col">Ranking</th>
+                <th scope="col">Team</th>
+                <th scope="col">Points</th>
+           
+              </tr>
+  
+            <tbody>
+              {% for i in basket %}
+              <tr>
+                
+                <form method ="POST" action="{% url 'saved' %}">
+                  {% csrf_token %} 
+                
+                <td>
+                  {{i.id }}
+                </td>
+                <input type="hidden" name="info" value="{{i.id}}">
+              
+                <td>{{ i.uni_name }}, {{i.program_name}}, <a href="{% url 'course' i.major_id %}"><b style="color: #02aab0;">{{i.major_name}} {{ i.major_type }}</b></a></td>
+                <td>  
+                  <button class="btn btn-block" type="submit"><center><i class="gg-trash"></i></center></button> 
+                </td>
+       
+                
+              </form>
+
+              </tr>
+              {% endfor %}
+              </thead>
+            </tbody>
+  
+          </table>
+  
+    
+        </div>
+      </div>
+    </div>
+  
+  </section>
+
+
+
+{% endblock %}

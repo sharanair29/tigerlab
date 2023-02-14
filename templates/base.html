@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'css/all.css' %}">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <!-- Custom -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <!--Lightbox-->
+  <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
+
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tigerlab</title>
+  <link rel="icon" type="images/x-icon" href="{% static 'img/tigerlab.png' %}" style="width:50px; object-fit: scale-down;" alt="" />
+</head>
+
+
+{% include 'partials/_navbar.html' %}
+
+
+
+
+<body class="bg-light">
+  <!--Top Bar-->
+    <!--Main Content-->
+    {% block content %}
+
+
+    
+    {% endblock %}
+
+
+
+
+
+  
+  <script src="{% static 'js/jquery-3.3.1.min.js' %} "></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %} "></script>
+  <script src="{% static 'js/main.js' %} "></script>
+  <script src="{% static 'js/lightbox.min.js' %} "></script>
+</body>
+{% include 'partials/_footer.html' %}
+
+</html>
+
+
+
+
+
