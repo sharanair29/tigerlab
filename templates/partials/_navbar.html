@@ -57,15 +57,29 @@
 
             {% if user.is_authenticated %}
 
-            {% if 'coreapp' in request.path %}
+
+     
+
+          
+            {% if 'analytics' not in request.path %}
             <li class="nav-item active">
-                <a class="nav-link" href="#">Dashboard</a>
+                <a class="nav-link" href="{% url 'coreapp' %}">Dashboard</a>
             </li>
             {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="#">Dashboard</a>
+                <a class="nav-link" href="{% url 'coreapp' %}">Dashboard</a>
             </li>
 
+            {% endif %}
+            {% if 'analytics' in request.path %}
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'analytics' %}">Output</a>
+            </li>
+            {% else %}
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'analytics' %}">Output</a>
+            </li>
             {% endif %}
 
 

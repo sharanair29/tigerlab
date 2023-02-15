@@ -4,6 +4,8 @@ from . import views
 
 urlpatterns = [
     path('', views.coreapp, name='coreapp'),
-    # path('login', views.login, name='login'),
+    path('analytics', views.analytics, name='analytics'),
+    path('deleteobj/<str:pk>', views.deleteobj, name='deleteobj'),
+    path('deletefile/<str:pk>', views.deletefile, name='deletefile'),
 
 ]

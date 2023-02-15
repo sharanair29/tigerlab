@@ -16,8 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", include('accounts.urls')),
-    path("coreapp", include('coreapp.urls')),
+from rest_framework import routers
+
+from api.views import RankViewSet
+
+router = routers.SimpleRouter()
+router.register("ranks", RankViewSet)
+
+urlpatterns = router.urls
+
+urlpatterns += [
+    path('admin/', admin.site.urls),
+    path('', include('accounts.urls')),
+    path('coreapp', include('coreapp.urls')),
+    path('ranks/', include('rest_framework.urls'))
 ]
