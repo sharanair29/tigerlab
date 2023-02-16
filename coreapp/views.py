@@ -6,34 +6,42 @@ from .forms import FileForm
 from django.db.models import Max, Subquery
 
 #Custom sort dictionary function
+# If reverse is True sort by descending order of values
+# If reverse is False sort by ascending order of values 
 def sort_dict_by_value(d, reverse = False):
   return dict(sorted(d.items(), key = lambda x: x[1], reverse = reverse))
 
 # only allow logged in users to view this page
+#view to upload csv files with team scores, delete files, delete individual team scores objects
 @login_required(login_url='login')
-def coreapp(request):
+def analytics(request):
+    """filter all files uploaded by user to load team scores"""
     files = Files.objects.filter(user=request.user)
+    """filter all team scores objects generated from uploaded files by user"""
     basket = TeamScore.objects.filter(user__username=request.user.username)
     context = {
         'basket' : basket,
         'files' : files
     }
-    return render(request, 'coreapp/dashboard.html', context)
+    return render(request, 'coreapp/analytics.html', context)
 
 @login_required(login_url='login')
 def deleteobj(request, pk):
+        """delete individual team score object generated from file upload"""
         teamscore = TeamScore.objects.filter(pk=pk)
         teamscore.delete()
-        return redirect('coreapp')
+        return redirect('analytics')
 
 @login_required(login_url='login')
 def deletefile(request, pk):
+        """delete file uploaded and linked team score objects from file upload"""
         files = Files.objects.filter(pk=pk)
         files.delete()
-        return redirect('coreapp')
+        return redirect('analytics')
 
+#view to compute the rank and points of team scores
 @login_required(login_url='login')
-def analytics(request):
+def coreapp(request):
     """Get unique team names"""
     teamnames =  list(TeamScore.objects.filter(user=request.user).values_list('team_name_1', flat=True).distinct('team_name_1'))
     teamnames2 =  list(TeamScore.objects.filter(user=request.user).values_list('team_name_2', flat=True).distinct('team_name_2'))
@@ -64,6 +72,6 @@ def analytics(request):
     """Sort dictionary in descending points value with custom function"""
     sorted_team_points = sort_dict_by_value(team_points, True)
     context = {
-        'team_points' : sorted_team_points
+        'team_points' : sorted_team_points,
     }
-    return render(request, 'coreapp/analytics.html', context)
+    return render(request, 'coreapp/dashboard.html', context)

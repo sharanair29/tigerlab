@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<link href='https://css.gg/trash.css' rel='stylesheet'>
+
 <section class="bg-light py-5 text-black">
     <div class="container">
       <div class="row text-center">
         <div class="col-md-12">
-          <!-- <h1 class="display-4">Dashboard</h1> -->
+  
           <p class="lead">Welcome {{request.user.username}}</p>
           {% include 'partials/_alerts.html' %}
         </div>
@@ -24,128 +24,48 @@
             {% csrf_token %}
        
       <label for="file">Upload an Excel File : </label>
-        <input type="file" name="test" id="test" accept=".csv"/> 
+        <input type="file" name="test" id="test" accept=".csv" class="btn"/> 
         <input type="submit">
         </form>
 
-        <br/>
-        <!-- <button class="btn">Add Data</button> -->
-        <br/>
+      
         <br/>
 
 
 
-          <table class="table">
-            <thead>
-              <tr>
-                
-                <th scope="col">#</th>
-                <th scope="col">File</th>
-                <th scope="col">Team 1</th>
-                <th scope="col">Score 1</th>
-                <th scope="col">Team 2</th>
-                <th scope="col">Score 2</th>
-                <th scope="col"></th>
-              </tr>
-  
-            <tbody>
-            
-              {% for i in basket %}
-              <tr>
-                
-                <form method ="POST" action="{% url 'deleteobj' i.id %}">
-                  {% csrf_token %} 
-                
-                <td>
-                  {{i.id }}
-
-                </td>
+        <table class="table">
+          <thead>
+            <tr>
               
-                <td>{{ i.file.id }}</td>
-
-                <td>
-                    {{ i.team_name_1 }}
-                </td>
-                <td>
-                    {{ i.team_score_1 }}
-                </td>
-                <td>
-                    {{ i.team_name_2 }}
-                </td>
-                <td>
-                    {{ i.team_score_2 }}
-                </td>
-                <td>
-              
-                <button class="btn btn-block" type="submit"><center><i class="gg-trash"></i></center></button> 
-                </td>
-       
-                
-              </form>
-
-              </tr>
-              {% endfor %}
-              </thead>
-            </tbody>
-  
-          </table>
-  
-    
-        </div>
-      </div>
-    </div>
-  
-  </section>
-
-
-  <section id="dashboard" class="bg-light py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-    
-        <p>Your uploaded files</p>
-          <table class="table">
-            <thead>
-              <tr>
-                
-                <th scope="col">#</th>
-                <th scope="col">File</th>
+              <th scope="col">Ranking</th>
+              <th scope="col">Team</th>
+              <th scope="col">Points</th>
+           
+            </tr>
           
-                <th scope="col"></th>
-              </tr>
-  
-            <tbody>
+
+          <tbody>
+            {% for key,value in team_points.items %}
+            <tr>
+          
+              
+              <td>
+                {{ forloop.counter }}
+              </td>
+
             
-              {% for f in files %}
-              <tr>
-                
-                <form method ="POST" action="{% url 'deletefile' f.id %}">
-                  {% csrf_token %} 
-                
-                <td>
-                  {{f.id }}
+              <td>{{ key }}</td>
+              <td>  
+                {{ value }}
+              </td>
+     
 
-                </td>
-              
+            </tr>
+            {% endfor %}
+            </thead>
+          </tbody>
 
-                <td>
-                    {{ f.file_uploaded }}
-                </td>
-               
-                <td>
-              
-                <button class="btn btn-block" type="submit"><center><i class="gg-trash"></i></center></button> 
-                </td>
-       
-                
-              </form>
-
-              </tr>
-              {% endfor %}
-              </thead>
-            </tbody>
-  
-          </table>
+        </table>
   
     
         </div>
@@ -153,5 +73,7 @@
     </div>
   
   </section>
+
+
 
 {% endblock %}

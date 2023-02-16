@@ -914,3 +914,272 @@ INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/vie
 INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
 INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
 INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /coreappanalytics
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 77, in analytics
+    return render(request, 'coreapp/analytics.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 226, in render
+    raise ValueError(
+ValueError: Need 3 values to unpack in for loop; got 2. 
+ERROR:django.request:Internal Server Error: /coreappanalytics
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 77, in analytics
+    return render(request, 'coreapp/analytics.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 852, in do_for
+    sequence = parser.compile_filter(bits[in_index + 1])
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 703, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '(len(team_points.items))' from 'range(len(team_points.items))'
+ERROR:django.request:Internal Server Error: /coreappanalytics
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 77, in analytics
+    return render(request, 'coreapp/analytics.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 852, in do_for
+    sequence = parser.compile_filter(bits[in_index + 1])
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 703, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '(len(team_points))' from 'range(len(team_points))'
+INFO:root:Success key fall back, Time : 2023-02-16 05:08:38.796042+00:00
+INFO:root:Success key fall back, Time : 2023-02-16 05:08:58.979252+00:00
+INFO:root:Success key fall back, Time : 2023-02-16 05:10:38.002773+00:00
+INFO:root:Success key fall back, Time : 2023-02-16 05:11:09.887907+00:00
+INFO:root:Success no key error, Time : 2023-02-16 05:11:22.387475+00:00
+INFO:root:Success key fall back, Time : 2023-02-16 05:11:36.038538+00:00
+DEBUG:root:Invalid file, Time : 2023-02-16 05:11:36.082358+00:00
+DEBUG:root:Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/api/views.py", line 38, in uploadfile
+    objs = [
+  File "/Users/aksharasadheesh/Desktop/tigerlab/api/views.py", line 42, in <listcomp>
+    team_name_1 = row["team_1 name"],
+KeyError: 'team_1 name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/api/views.py", line 68, in uploadfile
+    d = {titles[0] : x[0], titles[1]  : x[1], titles[2]  : x[2], titles[3] : x[3]}
+IndexError: list index out of range
+
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:root:Success key fall back, Time : 2023-02-16 05:21:45.545502+00:00
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:root:Success key fall back, Time : 2023-02-16 05:22:16.865784+00:00
+INFO:root:Success key fall back, Time : 2023-02-16 05:22:31.706553+00:00
+DEBUG:root:Invalid file, Time : 2023-02-16 05:22:31.740214+00:00
+DEBUG:root:Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/api/views.py", line 38, in uploadfile
+    objs = [
+  File "/Users/aksharasadheesh/Desktop/tigerlab/api/views.py", line 42, in <listcomp>
+    team_name_1 = row["team_1 name"],
+KeyError: 'team_1 name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/api/views.py", line 68, in uploadfile
+    d = {titles[0] : x[0], titles[1]  : x[1], titles[2]  : x[2], titles[3] : x[3]}
+IndexError: list index out of range
+
+INFO:root:Success key fall back, Time : 2023-02-16 05:22:36.236347+00:00
+WARNING:django.request:Not Found: /files/test_k0Q1KbL.csv
+WARNING:django.request:Not Found: /Users/aksharasadheesh/Desktop/tigerlab/files/test_k0Q1KbL.csv
+ERROR:django.request:Internal Server Error: /coreappanalytics
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 26, in analytics
+    return render(request, 'coreapp/analytics.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 484, in parse
+    raise self.error(token, e)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 482, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 703, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '/f.file_uploaded.url' from '/f.file_uploaded.url'
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/models.py changed, reloading.
+INFO:root:Success key fall back, Time : 2023-02-16 05:28:45.355776+00:00
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/tigerlab/settings.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/tigerlab/settings.py changed, reloading.
+INFO:root:Success key fall back, Time : 2023-02-16 05:30:28.382056+00:00
+WARNING:django.request:Not Found: /media/media/files/test.csv
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/models.py changed, reloading.
+INFO:root:Success key fall back, Time : 2023-02-16 05:31:01.140813+00:00
+WARNING:django.request:Not Found: /media/files/test_gzhnJ6M.csv
+WARNING:django.request:Not Found: /media/files/test_gzhnJ6M.csv
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/tigerlab/urls.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/tigerlab/urls.py changed, reloading.
+INFO:root:Success no key error, Time : 2023-02-16 05:33:36.791247+00:00

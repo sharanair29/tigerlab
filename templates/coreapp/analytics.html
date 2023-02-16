@@ -2,39 +2,119 @@
 {% load static %}
 {% block content %}
 
+<link href='https://css.gg/trash.css' rel='stylesheet'>
+  <section id="dashboard" class="bg-light py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+
+          <table class="table">
+            <thead>
+              <tr>
+                
+                <th scope="col">#</th>
+                <th scope="col">File</th>
+                <th scope="col">Team 1</th>
+                <th scope="col">Score 1</th>
+                <th scope="col">Team 2</th>
+                <th scope="col">Score 2</th>
+                <th scope="col"></th>
+              </tr>
+  
+            <tbody>
+            
+              {% for i in basket %}
+              <tr>
+                
+                <form method ="POST" action="{% url 'deleteobj' i.id %}">
+                  {% csrf_token %} 
+                
+                <td>
+                  {{ forloop.counter }}
+
+                </td>
+              
+                <td>{{ i.file.id }}</td>
+
+                <td>
+                    {{ i.team_name_1 }}
+                </td>
+                <td>
+                    {{ i.team_score_1 }}
+                </td>
+                <td>
+                    {{ i.team_name_2 }}
+                </td>
+                <td>
+                    {{ i.team_score_2 }}
+                </td>
+                <td>
+              
+                <button class="btn btn-block" type="submit"><center><i class="gg-trash"></i></center></button> 
+                </td>
+       
+                
+              </form>
+
+              </tr>
+              {% endfor %}
+              </thead>
+            </tbody>
+  
+          </table>
+    
+
+        
+  
+    
+        </div>
+      </div>
+    </div>
+  
+  </section>
+
 
   <section id="dashboard" class="bg-light py-4">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
     
-
+        <p>Your uploaded files</p>
           <table class="table">
             <thead>
               <tr>
                 
-                <th scope="col">Ranking</th>
-                <th scope="col">Team</th>
-                <th scope="col">Points</th>
-             
+                <th scope="col">#</th>
+                <th scope="col">File</th>
+          
+                <th scope="col"></th>
               </tr>
-            
   
             <tbody>
-              {% for key,value in team_points.items %}
-              <tr>
             
+              {% for f in files %}
+              <tr>
+                
+                <form method ="POST" action="{% url 'deletefile' f.id %}">
+                  {% csrf_token %} 
                 
                 <td>
-                  
-                </td>
+                  {{f.id }}
 
+                </td>
               
-                <td>{{ key }}</td>
-                <td>  
-                  {{ value }}
+
+                <td>
+                    <a href="{{f.file_uploaded.url}}">{{f.file_uploaded }}</a> 
+                </td>
+               
+                <td>
+              
+                <button class="btn btn-block" type="submit"><center><i class="gg-trash"></i></center></button> 
                 </td>
        
+                
+              </form>
 
               </tr>
               {% endfor %}
@@ -49,7 +129,6 @@
     </div>
   
   </section>
-
-
+  <!--Edit Team Score Pop Up-->
 
 {% endblock %}
