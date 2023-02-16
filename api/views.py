@@ -11,6 +11,8 @@ from django.core.files.base import ContentFile
 from django.core.files.storage import FileSystemStorage
 import traceback
 import pandas as pd
+import logging
+logging.basicConfig(filename="./log.txt", level=logging.DEBUG)
 
 
 # Serialize for data
@@ -47,34 +49,47 @@ class RankViewSet(viewsets.ModelViewSet):
                 ]
         
             msg = TeamScore.objects.bulk_create(objs)
+            logging.info("Success no key error, " + f"Time : {timezone.now()}")
             print("posting works")
             return redirect('coreapp')
-        except Exception as e:
-            print(traceback.format_exc())
-            reader = csv.reader(open(getFile.file_uploaded.path,'r',  encoding='utf-8'))
-            listtest = list(reader)
-            final = []
-            for l in listtest:
-                d = {"team_1 name" : l[0], "team_1 score" : l[1], "team_2 name" : l[2],"team_2 score" : l[3]}
-                final.append(d)
-            objs = [
-                    TeamScore(
-                    user = request.user,
-                    file = getFile,
-                    team_name_1 = row["team_1 name"],
-                    team_score_1 = row["team_1 score"],
-                    team_name_2 = row["team_2 name"],
-                    team_score_2 = row["team_2 score"],
-                        
-                    )
-                    for row in final
-                ]
-        
-            msg = TeamScore.objects.bulk_create(objs)
-            print("posting works")
-            return redirect('coreapp')
-        finally:
-            messages.error(request, "Csv file is invalid")
-            return redirect('coreapp')
+        except KeyError as e:
+            try:
+                print(traceback.format_exc())
+                logging.info("Success key fall back, " + f"Time : {timezone.now()}")
+                reader = csv.reader(open(getFile.file_uploaded.path,'r',  encoding='utf-8'))
+                listtest = list(reader)
+                headers = listtest.pop(0)
+                titles = headers[0].split(",")
+                final = []
+                
+                for l in listtest:
+                    x = l[0].split(", ")
+                
+                    d = {titles[0] : x[0], titles[1]  : x[1], titles[2]  : x[2], titles[3] : x[3]}
+                    final.append(d)
+
+                objs = [
+                        TeamScore(
+                        user = request.user,
+                        file = getFile,
+                        team_name_1 = row["team_1 name"],
+                        team_score_1 = row["team_1 score"],
+                        team_name_2 = row["team_2 name"],
+                        team_score_2 = row["team_2 score"],
+                            
+                        )
+                        for row in final
+                    ]
+            
+                msg = TeamScore.objects.bulk_create(objs)
+                print("posting works")
+                return redirect('coreapp')
+            except Exception as e:
+                getFile.delete()
+                print(traceback.format_exc())
+                logging.debug(f"Invalid file, Time : {timezone.now()}")
+                logging.debug(traceback.format_exc())
+                messages.error(request, "Csv file is invalid")
+                return redirect('coreapp')
 
 
