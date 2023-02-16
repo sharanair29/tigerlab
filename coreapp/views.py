@@ -20,18 +20,18 @@ def sort_dict_by_value(d, reverse = False):
 def analytics(request):
     """filter all files uploaded by user to load team scores"""
     files = Files.objects.filter(user=request.user)
-    """filter all team scores objects generated from uploaded files by user"""
-    basket = TeamScore.objects.filter(user__username=request.user.username)
+  
     """Add Team Score Form"""
     addform = TeamScoreForm()
 
     context = {
-        'basket' : basket,
+
         'files' : files,
         'addform' : addform
     }
     return render(request, 'coreapp/analytics.html', context)
 
+#delete team score object
 @login_required(login_url='login')
 def deleteobj(request, pk):
         """delete individual team score object generated from file upload"""
@@ -39,6 +39,7 @@ def deleteobj(request, pk):
         teamscore.delete()
         return redirect('analytics')
 
+#add team score object
 @login_required(login_url='login')
 def addobj(request):
         if request.method == 'POST':
@@ -53,7 +54,7 @@ def addobj(request):
                
             return redirect("analytics")
 
-
+@login_required(login_url='login')
 def edit_data(request, pk):
     ts = get_object_or_404(TeamScore, pk=pk)
     if request.method == "POST":
@@ -77,8 +78,16 @@ def edit_data(request, pk):
         'teamscore': ts,
     })
 
+#Get list of team score objects for the user
+def listteamscores(request):
+    """filter all team scores objects generated from uploaded files by user"""
+    basket = TeamScore.objects.filter(user__username=request.user.username)
+    context = {
+        'basket' : basket
+    }
+    return render(request, 'coreapp/listteamscores.html', context)
 
-
+#Delete file uplooad
 @login_required(login_url='login')
 def deletefile(request, pk):
         """delete file uploaded and linked team score objects from file upload"""

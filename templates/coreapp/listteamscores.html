@@ -1,0 +1,46 @@
+
+
+    {% for i in basket %}
+    <tr>
+
+      <td>
+        {{ forloop.counter }}
+
+      </td>
+
+      <td>{{ i.file.id }}</td>
+
+      <td>
+        {{ i.team_name_1 }}
+      </td>
+      <td>
+        {{ i.team_score_1 }}
+      </td>
+      <td>
+        {{ i.team_name_2 }}
+      </td>
+      <td>
+        {{ i.team_score_2 }}
+      </td>
+      <td>
+
+        <a class="open-DeleteTS" data-toggle="modal" href="#deleteModal" data-id="{{ i.id }}"
+          data-delete-url="{% url 'deleteobj' i.id %}">
+          <button class="btn" type="submit"><center><i class="gg-trash"></i></center></button> 
+        </a>
+
+      </td>
+
+      <td>
+        <!-- have a button POST a click via AJAX -->
+        <button class="btn btn-primary btn-sm" hx-get="{% url 'edit_data' pk=i.id %}" hx-target="#dialog">Edit</button>
+        <!-- <a class="btn" hx-get="{% url 'edit_data' pk=i.id %}" hx-target="#editModal">Edit Data</a> -->
+      </td>
+
+
+
+
+    </tr>
+    {% endfor %}
+    </thead>
+  </tbody>

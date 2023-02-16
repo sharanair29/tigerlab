@@ -2421,3 +2421,292 @@ INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/vie
 INFO:root:Success no key error, Time : 2023-02-16 11:12:08.039992+00:00
 INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
 INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:root:Success no key error, Time : 2023-02-16 11:18:22.149550+00:00
+INFO:root:Success key fall back, Time : 2023-02-16 11:18:27.277330+00:00
+DEBUG:root:Invalid file, Time : 2023-02-16 11:18:27.288190+00:00
+DEBUG:root:Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/api/views.py", line 37, in uploadfile
+    objs = [
+  File "/Users/aksharasadheesh/Desktop/tigerlab/api/views.py", line 41, in <listcomp>
+    team_name_1 = row["team_1 name"],
+KeyError: 'team_1 name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/api/views.py", line 67, in uploadfile
+    d = {titles[0] : x[0], titles[1]  : x[1], titles[2]  : x[2], titles[3] : x[3]}
+IndexError: list index out of range
+
+INFO:root:Success key fall back, Time : 2023-02-16 11:18:32.873120+00:00
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /coreapp/analytics
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 33, in analytics
+    return render(request, 'coreapp/analytics.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'listteamscores' not found. 'listteamscores' is not a valid view function or pattern name.
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/urls.py changed, reloading.
+ERROR:django.request:Internal Server Error: /coreapp/listteamscores
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 87, in listteamscores
+    return render(request, 'movie_list.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: movie_list.html
+ERROR:django.request:Internal Server Error: /coreapp/listteamscores
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 87, in listteamscores
+    return render(request, 'movie_list.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: movie_list.html
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/urls.py changed, reloading.
+ERROR:django.request:Internal Server Error: /coreapp/listteamscores
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 87, in listteamscores
+    return render(request, 'movie_list.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: movie_list.html
+ERROR:django.request:Internal Server Error: /coreapp/listteamscores
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 87, in listteamscores
+    return render(request, 'movie_list.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: movie_list.html
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /coreapp/listteamscores
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 87, in listteamscores
+    return render(request, 'listteamscores.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: listteamscores.html
+ERROR:django.request:Internal Server Error: /coreapp/listteamscores
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 87, in listteamscores
+    return render(request, 'listteamscores.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: listteamscores.html
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /coreapp/listteamscores
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 87, in listteamscores
+    return render(request, 'listteamscores.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: listteamscores.html
+ERROR:django.request:Internal Server Error: /coreapp/listteamscores
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 87, in listteamscores
+    return render(request, 'listteamscores.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: listteamscores.html
+ERROR:django.request:Internal Server Error: /coreapp/listteamscores
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 87, in listteamscores
+    return render(request, 'listteamscores.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: listteamscores.html
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /coreapp/listteamscores
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 87, in listteamscores
+    return render(request, 'listteamscores.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: listteamscores.html
+ERROR:django.request:Internal Server Error: /coreapp/listteamscores
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 87, in listteamscores
+    return render(request, 'listteamscores.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: listteamscores.html
+ERROR:django.request:Internal Server Error: /coreapp/listteamscores
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 87, in listteamscores
+    return render(request, 'listteamscores.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: listteamscores.html
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /coreapp/listteamscores
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 87, in listteamscores
+    return render(request, 'listteamscores.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: listteamscores.html
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /coreapp/listteamscores
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 87, in listteamscores
+    return render(request, 'listteamscores.html', context)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: listteamscores.html
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
