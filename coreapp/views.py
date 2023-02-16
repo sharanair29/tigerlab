@@ -3,9 +3,6 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import TeamScoreForm
-from django.db.models import Max, Subquery
-from django.contrib import messages, auth
-from django.core import serializers
 import json 
 
 #Custom sort dictionary function
@@ -51,8 +48,22 @@ def addobj(request):
        
             if teamscore.is_valid:
                 teamscore.save()
+                return HttpResponse(
+                status=204,
+                headers={
+                    'HX-Trigger': json.dumps({
+                        "dataListChanged": None,
+                        "showMessage": f"{getts.id} added."
+                    })
+                })
                
-            return redirect("analytics")
+        else:
+            form = TeamScoreForm()
+        titlevalue = "Add Data"
+        return render(request, 'coreapp/editdata.html', {
+            'form': form,
+            'titlevalue' : titlevalue
+        })
 
 @login_required(login_url='login')
 def edit_data(request, pk):
@@ -72,10 +83,11 @@ def edit_data(request, pk):
             )
     else:
         form = TeamScoreForm(instance=ts)
-
+    titlevalue = "Edit Data"
     return render(request, 'coreapp/editdata.html', {
         'form': form,
         'teamscore': ts,
+        'titlevalue' : titlevalue
     })
 
 #Get list of team score objects for the user

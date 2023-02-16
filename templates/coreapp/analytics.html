@@ -7,8 +7,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-
-        <a class="btn btn-primary text-white" data-toggle="modal"  style="border: none; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" data-target="#createModal">Add Data</a>
+        <button hx-get="{% url 'addobj' %}" hx-target="#dialog" class="btn btn-primary">Add Data</button>
+        <!-- <a class="btn btn-primary text-white" data-toggle="modal"  style="border: none; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" data-target="#createModal">Add Data</a> -->
 
         <br>
         <br>

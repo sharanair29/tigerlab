@@ -1,15 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from coreapp.models import *
-from django.http import HttpResponse
-from rest_framework.response import Response
 import io, csv, codecs
-from django.contrib import messages, auth
-from rest_framework import routers, serializers, viewsets
+from django.contrib import messages
+from rest_framework import serializers, viewsets
 from rest_framework.decorators import action
-from django.core.files.base import ContentFile
-from django.core.files.storage import FileSystemStorage
 import traceback
-import pandas as pd
 import logging
 logging.basicConfig(filename="./log.txt", level=logging.DEBUG)
 

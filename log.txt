@@ -2710,3 +2710,22 @@ Traceback (most recent call last):
     raise TemplateDoesNotExist(template_name, chain=chain)
 django.template.exceptions.TemplateDoesNotExist: listteamscores.html
 INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:root:Success no key error, Time : 2023-02-16 12:11:57.313481+00:00
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /coreapp/addobj
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py", line 56, in addobj
+    "showMessage": f"{teamscore.id} added."
+AttributeError: 'TeamScoreForm' object has no attribute 'id'
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
