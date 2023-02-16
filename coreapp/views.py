@@ -1,10 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import TeamScoreForm
 from django.db.models import Max, Subquery
 from django.contrib import messages, auth
+from django.core import serializers
+import json 
+
 #Custom sort dictionary function
 # If reverse is True sort by descending order of values
 # If reverse is False sort by ascending order of values 
@@ -49,6 +52,32 @@ def addobj(request):
                 teamscore.save()
                
             return redirect("analytics")
+
+
+def edit_data(request, pk):
+    ts = get_object_or_404(TeamScore, pk=pk)
+    if request.method == "POST":
+        form = TeamScoreForm(request.POST, instance=ts)
+        if form.is_valid():
+            form.save()
+            return HttpResponse(
+                status=204,
+                headers={
+                    'HX-Trigger': json.dumps({
+                        "dataListChanged": None,
+                        "showMessage": f"{ts.team_name_1} updated."
+                    })
+                }
+            )
+    else:
+        form = TeamScoreForm(instance=ts)
+
+    return render(request, 'coreapp/editdata.html', {
+        'form': form,
+        'teamscore': ts,
+    })
+
+
 
 @login_required(login_url='login')
 def deletefile(request, pk):

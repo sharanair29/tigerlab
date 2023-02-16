@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
 <link href='https://css.gg/trash.css' rel='stylesheet'>
 <section id="dashboard" class="bg-light py-4">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
 
-        <a class="btn btn-primary text-white" data-toggle="modal" data-target="#createModal">Add Data</a>
+        <a class="btn btn-primary text-white" data-toggle="modal"  style="border: none; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" data-target="#createModal">Add Data</a>
 
         <br>
         <br>
@@ -57,17 +57,15 @@
      
                 <a class="open-DeleteTS" data-toggle="modal" href="#deleteModal" data-id="{{ i.id }}"
                   data-delete-url="{% url 'deleteobj' i.id %}">
-                  <button class="btn btn-block" type="submit"><center><i class="gg-trash"></i></center></button> 
+                  <button class="btn" type="submit"><center><i class="gg-trash"></i></center></button> 
                 </a>
  
               </td>
 
               <td>
-                <a class="open-EditTS" data-toggle="modal" href="#editModal" data-id="{{ i.id }}"
-                  data-edit-url="testing">
-                  Edit Data
-                </a>
-                <!-- <a class="btn" data-toggle="modal" data-target="#editModal">Edit Data</a> -->
+                <!-- have a button POST a click via AJAX -->
+                <button class="btn btn-primary btn-sm" hx-get="{% url 'edit_data' pk=i.id %}" hx-target="#dialog">Edit</button>
+                <!-- <a class="btn" hx-get="{% url 'edit_data' pk=i.id %}" hx-target="#editModal">Edit Data</a> -->
               </td>
 
 
@@ -112,8 +110,8 @@
             {% for f in files %}
             <tr>
 
-              <form method="POST" action="{% url 'deletefile' f.id %}">
-                {% csrf_token %}
+              <!-- <form method="POST" action="{% url 'deletefile' f.id %}">
+                {% csrf_token %} -->
 
                 <td>
                   {{f.id }}
@@ -126,14 +124,15 @@
                 </td>
 
                 <td>
+                  <a class="open-DeleteFile" data-toggle="modal" href="#deleteModal" data-id="{{ i.id }}"
+                  data-delete-url="{% url 'deletefile' f.id %}">
+                  <button class="btn" type="submit"><center><i class="gg-trash"></i></center></button> 
+                </a>
 
-                  <button class="btn btn-block" type="submit">
-                    <center><i class="gg-trash"></i></center>
-                  </button>
                 </td>
 
 
-              </form>
+              <!-- </form> -->
 
             </tr>
             {% endfor %}
@@ -159,8 +158,8 @@
         <h5 class="text-dark text-center w-100 m-0" id="exampleModalLabel">
           Add
         </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-            aria-hidden="true">&times;</span></button>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true"></span></button>
       </div>
       <!-- body -->
       <div class="modal-body">
@@ -189,63 +188,8 @@
       <!-- footer -->
       <div class="modal-footer">
 
-        <button type="submit" class="btn btn-block btn-primary w-100">
+        <button type="submit" class="btn btn-block btn-primary w-100" style="border: none; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);">
           Add
-        </button>
-      </div>
-    </div>
-    </form>
-
-  </div>
-</div>
-</div>
-
-</div>
-<!--Edit Team Score Pop Up-->
-
-
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true"
-  data-backdrop="false">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <!-- head -->
-      <div class="modal-header align-items-center">
-        <h5 class="text-dark text-center w-100 m-0" id="exampleModalLabel">
-          Edit
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-            aria-hidden="true">&times;</span></button>
-      </div>
-      <!-- body -->
-      <div class="modal-body">
-        <div class="my-1 p-1">
-          <div class="d-flex flex-column">
-
-
-            <br>
-            <form action="#" method="post" enctype="multipart/form-data">
-              {% csrf_token %}
-
-
-
-              <!-- form -->
-              <div>
-                {{editform.as_p}}
-
-              </div>
-
-
-
-          </div>
-        </div>
-      </div>
-
-      <!-- end -->
-
-      <!-- footer -->
-      <div class="modal-footer">
-        <button type="submit" class="btn w-100">
-          Edit Data
         </button>
       </div>
     </div>
@@ -266,11 +210,11 @@
     <div class="modal-content">
       <!-- head -->
       <div class="modal-header align-items-center">
-        <h5 class="text-dark text-center w-100 m-0" id="exampleModalLabel">
-          Delete Team Score
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-            aria-hidden="true">&times;</span></button>
+        <!-- <h5 class="text-dark text-center w-100 m-0" id="exampleModalLabel">
+          Delete
+        </h5> -->
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true"></span></button>
       </div>
       <!-- body -->
       <div class="modal-body">
@@ -282,7 +226,7 @@
             
               <!-- form -->
               <div>
-               <p>Are you sure about deleting this?</p>
+               <p align="center">Are you sure about deleting this?</p>
 
               </div>
 
@@ -298,8 +242,9 @@
         <form action="#" method="post" enctype="multipart/form-data" id="delete_file_href">
           {% csrf_token %}
 
-        <button type="submit" class="btn btn-block btn-primary w-100" style="background-color: red;">
-          Delete Team Score
+        <button 
+        type="submit" class="btn btn-block btn-primary w-100" style="background-color:#f44336; border: none; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);">
+          Delete
         </button>
       </form>
       </div>
@@ -311,6 +256,13 @@
 </div>
 
 </div>
+
+
+<!--EDIT-->
+<div id="edits" class="modal fade">
+  <div id="dialog" class="modal-dialog" hx-target="this"></div>
+</div>
+
 
 <!--AJAX-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -324,13 +276,43 @@
  
   });
 
-
-  $(document).on("click", ".open-EditTS", function () {
-    var delete_url = $(this).data('edit-url');
+  $(document).on("click", ".open-DeleteFile", function () {
+    var delete_url = $(this).data('delete-url');
     console.log(delete_url)
-    // $(".modal-footer #delete_file_href").attr('action', delete_url)
+    $(".modal-footer #delete_file_href").attr('action', delete_url)
  
   });
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/htmx.org@1.6.1/dist/htmx.min.js"></script>
+<script>
+
+;(function () {
+  const modal = new bootstrap.Modal(document.getElementById("edits"))
+
+  htmx.on("htmx:afterSwap", (e) => {
+    // Response targeting #dialog => show the modal
+    if (e.detail.target.id == "dialog") {
+      modal.show()
+    }
+  })
+
+  htmx.on("htmx:beforeSwap", (e) => {
+    // Empty response targeting #dialog => hide the modal
+    if (e.detail.target.id == "dialog" && !e.detail.xhr.response) {
+      modal.hide()
+      e.detail.shouldSwap = false
+    }
+  })
+
+  // Remove dialog content after hiding
+  htmx.on("hidden.bs.modal", () => {
+    document.getElementById("dialog").innerHTML = ""
+  })
+})()
 </script>
 
 {% endblock %}

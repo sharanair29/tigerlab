@@ -1,0 +1,35 @@
+{% load widget_tweaks %}
+{% with WIDGET_ERROR_CLASS='is-invalid' %}
+<form hx-post="{{ request.path }}" hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}' class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">Edit Data</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <div class="mb-3">
+      <label for="{{ form.team_name_1.id_for_label }}" class="form-label">Team 1 Name</label>
+      {% render_field form.team_name_1 class="form-control" placeholder="Fantastics" %}
+      <div class="invalid-feedback">{{ form.team_name_1.errors|first }}</div>
+    </div>
+    <div class="mb-3">
+      <label for="{{ form.team_score_1.id_for_label }}" class="form-label">Team 1 Score</label>
+      {% render_field form.team_score_1 class="form-control" placeholder="3" %}
+      <div class="invalid-feedback">{{ form.team_score_1.errors|first }}</div>
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.team_name_2.id_for_label }}" class="form-label">Team 2 Name</label>
+        {% render_field form.team_name_2 class="form-control" placeholder="Rebels" %}
+        <div class="invalid-feedback">{{ form.team_name_2.errors|first }}</div>
+      </div>
+      <div class="mb-3">
+        <label for="{{ form.team_score_2.id_for_label }}" class="form-label">Team 2 Score</label>
+        {% render_field form.team_score_2 class="form-control" placeholder="0" %}
+        <div class="invalid-feedback">{{ form.team_score_2.errors|first }}</div>
+      </div>
+  </div>
+  <div class="modal-footer">
+    
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+</form>
+{% endwith %}
