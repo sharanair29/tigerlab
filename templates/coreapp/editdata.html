@@ -28,6 +28,10 @@
       </div>
   </div>
   <div class="modal-footer">
+    {% if teamscore %}
+    <button class="btn text-white" type="button" hx-post="{% url 'deleteobj' pk=teamscore.id %}" style="background-color:#f44336; border: none;"><center><i class="gg-trash"> </i></center></button> 
+    <span class="flex-grow-1"></span>
+    {% endif %}
     
     <button type="submit" class="btn btn-primary">Save</button>
   </div>

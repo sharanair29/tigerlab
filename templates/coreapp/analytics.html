@@ -7,7 +7,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <button hx-get="{% url 'addobj' %}" hx-target="#dialog" class="btn btn-primary">Add Data</button>
+        <button hx-get="{% url 'addobj' %}" hx-target="#dialog" class="btn btn-primary" style="border: none; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);">Add Data</button>
         <!-- <a class="btn btn-primary text-white" data-toggle="modal"  style="border: none; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);" data-target="#createModal">Add Data</a> -->
 
         <br>
@@ -23,7 +23,7 @@
               <th scope="col">Score 1</th>
               <th scope="col">Team 2</th>
               <th scope="col">Score 2</th>
-              <th scope="col"></th>
+              <!-- <th scope="col"></th> -->
               <th scope="col"></th>
             </tr>
             <tbody hx-trigger="load, dataListChanged from:body" hx-get="{% url 'listteamscores' %}" hx-target="this">
@@ -85,7 +85,7 @@
                 <td>
                   <a class="open-DeleteFile" data-toggle="modal" href="#deleteModal" data-id="{{ i.id }}"
                   data-delete-url="{% url 'deletefile' f.id %}">
-                  <button class="btn" type="submit"><center><i class="gg-trash"></i></center></button> 
+                  <button class="btn text-white" type="submit" style="background-color:#f44336; border: none;"><center><i class="gg-trash"></i></center></button> 
                 </a>
 
                 </td>
@@ -169,9 +169,7 @@
     <div class="modal-content">
       <!-- head -->
       <div class="modal-header align-items-center">
-        <!-- <h5 class="text-dark text-center w-100 m-0" id="exampleModalLabel">
-          Delete
-        </h5> -->
+        
         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span
             aria-hidden="true"></span></button>
       </div>
@@ -185,7 +183,7 @@
             
               <!-- form -->
               <div>
-               <p align="center">Are you sure about deleting this?</p>
+               <p align="center">Are you sure about deleting this file?</p>
 
               </div>
 

@@ -32,9 +32,16 @@ def analytics(request):
 @login_required(login_url='login')
 def deleteobj(request, pk):
         """delete individual team score object generated from file upload"""
-        teamscore = TeamScore.objects.filter(pk=pk)
+        teamscore = get_object_or_404(TeamScore, pk=pk)
         teamscore.delete()
-        return redirect('analytics')
+        return HttpResponse(
+            status=204,
+            headers={
+                'HX-Trigger': json.dumps({
+                    "dataListChanged": None,
+                    "showMessage": f"{teamscore.id} deleted."
+                })
+            })
 
 #add team score object
 @login_required(login_url='login')

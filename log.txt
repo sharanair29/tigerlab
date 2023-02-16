@@ -2729,3 +2729,14 @@ INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/vie
 INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
 INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
 INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+WARNING:django.security.csrf:Forbidden (CSRF token missing.): /coreapp/analytics
+WARNING:django.security.csrf:Forbidden (CSRF token missing.): /coreapp/analytics
+WARNING:django.security.csrf:Forbidden (CSRF token missing.): /coreapp/analytics
+WARNING:django.security.csrf:Forbidden (CSRF token missing.): /coreapp/analytics
+WARNING:django.request:Not Found: /coreapp/deleteobj/426
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:root:Success no key error, Time : 2023-02-16 13:20:45.824443+00:00
+INFO:root:Success key fall back, Time : 2023-02-16 13:20:51.042819+00:00
