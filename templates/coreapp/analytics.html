@@ -16,28 +16,25 @@
                 <th scope="col">Ranking</th>
                 <th scope="col">Team</th>
                 <th scope="col">Points</th>
-                <th scope="col"></th>
+             
               </tr>
+            
   
             <tbody>
-              {% for i in basket %}
+              {% for key,value in team_points.items %}
               <tr>
-                
-                <form method ="POST" action="{% url 'saved' %}">
-                  {% csrf_token %} 
+            
                 
                 <td>
-                  {{i.id }}
+                  
                 </td>
-                <input type="hidden" name="info" value="{{i.id}}">
+
               
-                <td>{{ i.uni_name }}, {{i.program_name}}, <a href="{% url 'course' i.major_id %}"><b style="color: #02aab0;">{{i.major_name}} {{ i.major_type }}</b></a></td>
+                <td>{{ key }}</td>
                 <td>  
-                  <button class="btn btn-block" type="submit"><center><i class="gg-trash"></i></center></button> 
+                  {{ value }}
                 </td>
        
-                
-              </form>
 
               </tr>
               {% endfor %}
