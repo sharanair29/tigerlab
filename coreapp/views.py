@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .forms import FileForm
+from .forms import TeamScoreForm
 from django.db.models import Max, Subquery
-
+from django.contrib import messages, auth
 #Custom sort dictionary function
 # If reverse is True sort by descending order of values
 # If reverse is False sort by ascending order of values 
@@ -19,9 +19,13 @@ def analytics(request):
     files = Files.objects.filter(user=request.user)
     """filter all team scores objects generated from uploaded files by user"""
     basket = TeamScore.objects.filter(user__username=request.user.username)
+    """Add Team Score Form"""
+    addform = TeamScoreForm()
+
     context = {
         'basket' : basket,
-        'files' : files
+        'files' : files,
+        'addform' : addform
     }
     return render(request, 'coreapp/analytics.html', context)
 
@@ -31,6 +35,20 @@ def deleteobj(request, pk):
         teamscore = TeamScore.objects.filter(pk=pk)
         teamscore.delete()
         return redirect('analytics')
+
+@login_required(login_url='login')
+def addobj(request):
+        if request.method == 'POST':
+            create = TeamScore.objects.create(user=request.user, file = None)
+            create.save()
+            id = create.id
+            getts = TeamScore.objects.filter(pk=id).first()
+            teamscore = TeamScoreForm(request.POST, request.FILES, instance=getts)
+       
+            if teamscore.is_valid:
+                teamscore.save()
+               
+            return redirect("analytics")
 
 @login_required(login_url='login')
 def deletefile(request, pk):

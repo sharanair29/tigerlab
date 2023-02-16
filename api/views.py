@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from coreapp.models import *
-from coreapp.forms import FileForm
 from django.http import HttpResponse
 from rest_framework.response import Response
 import io, csv, codecs

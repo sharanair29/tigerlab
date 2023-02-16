@@ -3,132 +3,334 @@
 {% block content %}
 
 <link href='https://css.gg/trash.css' rel='stylesheet'>
-  <section id="dashboard" class="bg-light py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
+<section id="dashboard" class="bg-light py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
 
-          <table class="table">
-            <thead>
-              <tr>
-                
-                <th scope="col">#</th>
-                <th scope="col">File</th>
-                <th scope="col">Team 1</th>
-                <th scope="col">Score 1</th>
-                <th scope="col">Team 2</th>
-                <th scope="col">Score 2</th>
-                <th scope="col"></th>
-              </tr>
-  
-            <tbody>
-            
-              {% for i in basket %}
-              <tr>
-                
-                <form method ="POST" action="{% url 'deleteobj' i.id %}">
-                  {% csrf_token %} 
-                
-                <td>
-                  {{ forloop.counter }}
+        <a class="btn btn-primary text-white" data-toggle="modal" data-target="#createModal">Add Data</a>
 
-                </td>
-              
-                <td>{{ i.file.id }}</td>
+        <br>
+        <br>
 
-                <td>
-                    {{ i.team_name_1 }}
-                </td>
-                <td>
-                    {{ i.team_score_1 }}
-                </td>
-                <td>
-                    {{ i.team_name_2 }}
-                </td>
-                <td>
-                    {{ i.team_score_2 }}
-                </td>
-                <td>
-              
-                <button class="btn btn-block" type="submit"><center><i class="gg-trash"></i></center></button> 
-                </td>
-       
-                
-              </form>
+        <table class="table">
+          <thead>
+            <tr>
 
-              </tr>
-              {% endfor %}
-              </thead>
-            </tbody>
-  
-          </table>
-    
+              <th scope="col">#</th>
+              <th scope="col">File</th>
+              <th scope="col">Team 1</th>
+              <th scope="col">Score 1</th>
+              <th scope="col">Team 2</th>
+              <th scope="col">Score 2</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
 
-        
-  
-    
-        </div>
+          <tbody>
+
+            {% for i in basket %}
+            <tr>
+
+
+
+              <td>
+                {{ forloop.counter }}
+
+              </td>
+
+              <td>{{ i.file.id }}</td>
+
+              <td>
+                {{ i.team_name_1 }}
+              </td>
+              <td>
+                {{ i.team_score_1 }}
+              </td>
+              <td>
+                {{ i.team_name_2 }}
+              </td>
+              <td>
+                {{ i.team_score_2 }}
+              </td>
+              <td>
+     
+                <a class="open-DeleteTS" data-toggle="modal" href="#deleteModal" data-id="{{ i.id }}"
+                  data-delete-url="{% url 'deleteobj' i.id %}">
+                  <button class="btn btn-block" type="submit"><center><i class="gg-trash"></i></center></button> 
+                </a>
+ 
+              </td>
+
+              <td>
+                <a class="open-EditTS" data-toggle="modal" href="#editModal" data-id="{{ i.id }}"
+                  data-edit-url="testing">
+                  Edit Data
+                </a>
+                <!-- <a class="btn" data-toggle="modal" data-target="#editModal">Edit Data</a> -->
+              </td>
+
+
+
+
+            </tr>
+            {% endfor %}
+            </thead>
+          </tbody>
+
+        </table>
+
+
+
+
+
       </div>
     </div>
-  
-  </section>
+  </div>
+
+</section>
 
 
-  <section id="dashboard" class="bg-light py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-    
+<section id="dashboard" class="bg-light py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
         <p>Your uploaded files</p>
-          <table class="table">
-            <thead>
-              <tr>
-                
-                <th scope="col">#</th>
-                <th scope="col">File</th>
-          
-                <th scope="col"></th>
-              </tr>
-  
-            <tbody>
-            
-              {% for f in files %}
-              <tr>
-                
-                <form method ="POST" action="{% url 'deletefile' f.id %}">
-                  {% csrf_token %} 
-                
+        <table class="table">
+          <thead>
+            <tr>
+
+              <th scope="col">#</th>
+              <th scope="col">File</th>
+
+              <th scope="col"></th>
+            </tr>
+
+          <tbody>
+
+            {% for f in files %}
+            <tr>
+
+              <form method="POST" action="{% url 'deletefile' f.id %}">
+                {% csrf_token %}
+
                 <td>
                   {{f.id }}
 
                 </td>
-              
+
 
                 <td>
-                    <a href="{{f.file_uploaded.url}}">{{f.file_uploaded }}</a> 
+                  <a href="{{f.file_uploaded.url}}">{{f.file_uploaded }}</a>
                 </td>
-               
+
                 <td>
-              
-                <button class="btn btn-block" type="submit"><center><i class="gg-trash"></i></center></button> 
+
+                  <button class="btn btn-block" type="submit">
+                    <center><i class="gg-trash"></i></center>
+                  </button>
                 </td>
-       
-                
+
+
               </form>
 
-              </tr>
-              {% endfor %}
-              </thead>
-            </tbody>
-  
-          </table>
-  
-    
-        </div>
+            </tr>
+            {% endfor %}
+            </thead>
+          </tbody>
+
+        </table>
+
+
       </div>
     </div>
-  
-  </section>
-  <!--Edit Team Score Pop Up-->
+  </div>
+
+</section>
+<!--Add Team Score Pop Up-->
+
+<div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true"
+  data-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- head -->
+      <div class="modal-header align-items-center">
+        <h5 class="text-dark text-center w-100 m-0" id="exampleModalLabel">
+          Add
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+      </div>
+      <!-- body -->
+      <div class="modal-body">
+        <div class="my-1 p-1">
+          <div class="d-flex flex-column">
+
+
+            <br>
+            <form action="{% url 'addobj' %}" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+
+              <!-- form -->
+              <div>
+                {{addform.as_p}}
+
+              </div>
+
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- end -->
+
+      <!-- footer -->
+      <div class="modal-footer">
+
+        <button type="submit" class="btn btn-block btn-primary w-100">
+          Add
+        </button>
+      </div>
+    </div>
+    </form>
+
+  </div>
+</div>
+</div>
+
+</div>
+<!--Edit Team Score Pop Up-->
+
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true"
+  data-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- head -->
+      <div class="modal-header align-items-center">
+        <h5 class="text-dark text-center w-100 m-0" id="exampleModalLabel">
+          Edit
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+      </div>
+      <!-- body -->
+      <div class="modal-body">
+        <div class="my-1 p-1">
+          <div class="d-flex flex-column">
+
+
+            <br>
+            <form action="#" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+
+
+
+              <!-- form -->
+              <div>
+                {{editform.as_p}}
+
+              </div>
+
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- end -->
+
+      <!-- footer -->
+      <div class="modal-footer">
+        <button type="submit" class="btn w-100">
+          Edit Data
+        </button>
+      </div>
+    </div>
+    </form>
+
+  </div>
+</div>
+</div>
+
+</div>
+
+
+
+<!--DELETE-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true"
+  data-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- head -->
+      <div class="modal-header align-items-center">
+        <h5 class="text-dark text-center w-100 m-0" id="exampleModalLabel">
+          Delete Team Score
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+      </div>
+      <!-- body -->
+      <div class="modal-body">
+        
+         
+
+
+            <br>
+            
+              <!-- form -->
+              <div>
+               <p>Are you sure about deleting this?</p>
+
+              </div>
+
+
+
+        
+      </div>
+
+      <!-- end -->
+
+      <!-- footer -->
+      <div class="modal-footer">
+        <form action="#" method="post" enctype="multipart/form-data" id="delete_file_href">
+          {% csrf_token %}
+
+        <button type="submit" class="btn btn-block btn-primary w-100" style="background-color: red;">
+          Delete Team Score
+        </button>
+      </form>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+</div>
+
+</div>
+
+<!--AJAX-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+  $(document).on("click", ".open-DeleteTS", function () {
+    var delete_url = $(this).data('delete-url');
+    console.log(delete_url)
+    $(".modal-footer #delete_file_href").attr('action', delete_url)
+ 
+  });
+
+
+  $(document).on("click", ".open-EditTS", function () {
+    var delete_url = $(this).data('edit-url');
+    console.log(delete_url)
+    // $(".modal-footer #delete_file_href").attr('action', delete_url)
+ 
+  });
+</script>
 
 {% endblock %}

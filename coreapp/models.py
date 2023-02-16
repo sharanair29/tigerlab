@@ -15,7 +15,7 @@ class Files(models.Model):
 class TeamScore(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     file = models.ForeignKey(Files, on_delete=models.CASCADE, blank=True,  null=True)
-    team_name_1 = models.CharField(max_length=100, blank=True)
+    team_name_1 = models.CharField(max_length=100)
     team_score_1 = models.IntegerField(default=0)
-    team_name_2 = models.CharField(max_length=100, blank=True)
+    team_name_2 = models.CharField(max_length=100)
     team_score_2 = models.IntegerField(default=0)

@@ -14,8 +14,8 @@ pipeline {
 
         stage('Deploy to Staging') { 
             steps {
-                sh 'ssh -o StrictHostKeyChecking=no deployment-user@128.199.71.90 "source venv/bin/activate; \
-                cd polling; \
+                sh 'ssh -o StrictHostKeyChecking=no deployment-user@stagingip "source venv/bin/activate; \
+                cd tigerlab; \
                 git pull origin master; \
                 pip install -r requirements.txt --no-warn-script-location; \
                 python manage.py migrate; \
@@ -31,7 +31,7 @@ pipeline {
                 ok "Yes please!"
             }
             steps {
-                sh 'ssh -o StrictHostKeyChecking=no deployment-user@143.198.68.33 "source venv/bin/activate; \
+                sh 'ssh -o StrictHostKeyChecking=no deployment-user@productionip "source venv/bin/activate; \
                 cd polling; \
                 git pull origin master; \
                 pip install -r requirements.txt --no-warn-script-location; \
