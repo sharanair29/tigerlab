@@ -5,6 +5,10 @@ from .models import *
 from .forms import FileForm
 from django.db.models import Max, Subquery
 
+#Custom sort dictionary function
+def sort_dict_by_value(d, reverse = False):
+  return dict(sorted(d.items(), key = lambda x: x[1], reverse = reverse))
+
 # only allow logged in users to view this page
 @login_required(login_url='login')
 def coreapp(request):
@@ -30,34 +34,36 @@ def deletefile(request, pk):
 
 @login_required(login_url='login')
 def analytics(request):
+    """Get unique team names"""
     teamnames =  list(TeamScore.objects.filter(user=request.user).values_list('team_name_1', flat=True).distinct('team_name_1'))
     teamnames2 =  list(TeamScore.objects.filter(user=request.user).values_list('team_name_2', flat=True).distinct('team_name_2'))
     teams = teamnames + teamnames2
-    # print(teams)
+    """Assign 0 points to each team with team name as key in dictionary"""
     points = [0] * len(teams)
     team_points = dict(zip(teams, points))
-    print(team_points)
+    """Get all TeamScore uploaded values for the current user"""
     teamscore = TeamScore.objects.filter(user__username=request.user.username)
-    
-    # for i in teamscore:
-    #     if i.team_score_1 == i.team_score_2:
-    #         t1points = 1
-    #         t2points = 1
-    #     else:
-    #         if i.team_score_1 > i.team_score_2:
-    #             t1points = 3
-    #             t2points = 0
-    #         else:
-    #             t1points = 0
-    #             t2points = 3
-    # teamname1 = team_points.get(i.team_name_1) + t1points
-    # teamname2 = team_points.get(i.team_name_2) + t2points
-    # team_points[f"{i.team_name_1}"] = teamname1
-    # team_points[f"{i.team_name_2}"] = teamname2
-    # print(teamname1)
-    # print(teamname2)
-    
+    """Loop through list of distinct team names and filter TeamScores by team name 1"""
+    for t in teams:
+        getValues = teamscore.filter(team_name_1 = f"{t}")
+        for i in getValues:
+            if i.team_score_1 == i.team_score_2:
+                t1points = 1
+                t2points = 1
+            elif i.team_score_1 > i.team_score_2:
+                t1points = 3
+                t2points = 0
+            else:
+                t1points = 0
+                t2points = 3
+            """Update dictionary points per team looped"""
+            teamname1 = team_points.get(t) + t1points
+            teamname2 = team_points.get(i.team_name_2) + t2points
+            team_points[f"{t}"] = teamname1
+            team_points[f"{i.team_name_2}"] = teamname2
+    """Sort dictionary in descending points value with custom function"""
+    sorted_team_points = sort_dict_by_value(team_points, True)
     context = {
-        'team_points' : team_points
+        'team_points' : sorted_team_points
     }
     return render(request, 'coreapp/analytics.html', context)

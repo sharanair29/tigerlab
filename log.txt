@@ -904,3 +904,13 @@ IndexError: list index out of range
 
 INFO:root:Success key fall back, Time : 2023-02-16 04:08:33.391904+00:00
 INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/api/views.py changed, reloading.
+WARNING:django.request:Not Found: /accounts/profile
+WARNING:django.request:Not Found: /accounts/profile
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
