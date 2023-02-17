@@ -30,6 +30,6 @@ urlpatterns += [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
     path('coreapp/', include('coreapp.urls')),
-    path('ranks/', include('rest_framework.urls'))
+    path(r'ranks', include('rest_framework.urls'))
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

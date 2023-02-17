@@ -10,7 +10,10 @@ from django.core.cache import cache
 
 import logging
 logging.basicConfig(filename="./logging.log", level=logging.DEBUG)
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.decorators import api_view, permission_classes
 
+from rest_framework import generics, renderers
 
 # Serialize for data
 class TeamScoreSerializer(serializers.ModelSerializer):
@@ -18,9 +21,12 @@ class TeamScoreSerializer(serializers.ModelSerializer):
         model = TeamScore
         fields = "__all__"
 
+@permission_classes([IsAuthenticated])
 class RankViewSet(viewsets.ModelViewSet):
+    http_method_names = ['post']
     queryset = TeamScore.objects.all()
     serializer_class = TeamScoreSerializer
+   
     @action(detail=False, methods=['POST'])
     def uploadfile(self,request):
         file = request.FILES.get("test")
