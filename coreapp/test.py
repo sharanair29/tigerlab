@@ -3,6 +3,7 @@ from django.urls import reverse, resolve
 from .views import *
 
 class TestUrls(SimpleTestCase):
+    """urls with no arguments within coreapp"""
     def test_coreapp_url_resolves(self):
         url = reverse("coreapp")
         print(resolve(url))
@@ -19,6 +20,7 @@ class TestUrls(SimpleTestCase):
         url = reverse("listteamscores")
         print(resolve(url))
         self.assertEquals(resolve(url).func, listteamscores)
+    """urls with arguments within coreapp"""
     def test_deleteobj_url_resolves(self):
         url = reverse("deleteobj", args=['some-pk'])
         print(resolve(url))
