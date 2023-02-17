@@ -3,6 +3,7 @@ This app uses django rest framework to import csv files into the TeamScore Model
 Below are the links to the documentation that was referred to in implementing this webapp:
 
 HTMX for forms : https://htmx.org/
+
 redis for caching : https://redis.io/
 
 # HTMX
@@ -16,6 +17,7 @@ To start the webapp manually, please have a redis server runnning and check your
 If you are on a mac you can use homebrew and run:
 
 brew install redis
+
 brew services start redis
 
 Test your connection by keying in PING, you should receive PONG as an output.
