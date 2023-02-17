@@ -34,7 +34,7 @@
                     <div class="card-body">
                         <!--Alerts-->
                         {% include 'partials/_alerts.html' %}
-                        <form action="#" method="POST">
+                        <form action="{% url 'register' %}" method="POST">
                             {% csrf_token %}
                             <div class="mb-3">
                                 <input placeholder="First Name" type="text" name="first_name" class="form-control"

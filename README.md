@@ -60,6 +60,12 @@ python manage.py makemigrations
 
 python manage.py migrate
 
+# Create a superuser
+
+Run the following commands and input your desired username and password:
+
+python manage.py createsuperuser
+
 # Run app
 
 You may now run:
