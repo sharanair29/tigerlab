@@ -76,7 +76,7 @@ You may now run:
 
 Hit Ctrl + C to stop your server from running the application locally.
 
-In case you would like to get a view of how mobile responsive the application is and how it works from a mobile device or an ipad. You may choose the run application on your ip address at port 8000.
+In case you would like to get a view of how mobile responsive the application is and how it works from a mobile device or an ipad. You may choose to the run application on your ip address at port 8000.
 
 On a mac get your ip address by running: 
 
