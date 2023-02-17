@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import TeamScoreForm
 import json 
-
+from django.core.cache import cache
 #Custom sort dictionary function
 # If reverse is True sort by descending order of values
 # If reverse is False sort by ascending order of values 
@@ -34,6 +34,7 @@ def deleteobj(request, pk):
         """delete individual team score object generated from file upload"""
         teamscore = get_object_or_404(TeamScore, pk=pk)
         teamscore.delete()
+        cache.clear()
         return HttpResponse(
             status=204,
             headers={
@@ -55,6 +56,7 @@ def addobj(request):
        
             if teamscore.is_valid:
                 teamscore.save()
+                cache.clear()
                 return HttpResponse(
                 status=204,
                 headers={
@@ -72,13 +74,22 @@ def addobj(request):
             'titlevalue' : titlevalue
         })
 
+
 @login_required(login_url='login')
 def edit_data(request, pk):
-    ts = get_object_or_404(TeamScore, pk=pk)
+    if cache.get(pk):
+        ts = cache.get(pk)
+        print("hit the cache")
+    else:
+        ts = get_object_or_404(TeamScore, pk=pk)
+        cache.set(pk, ts)
+        print("hit the db")
     if request.method == "POST":
+        
         form = TeamScoreForm(request.POST, instance=ts)
         if form.is_valid():
             form.save()
+            cache.clear()
             return HttpResponse(
                 status=204,
                 headers={
@@ -100,7 +111,18 @@ def edit_data(request, pk):
 #Get list of team score objects for the user
 def listteamscores(request):
     """filter all team scores objects generated from uploaded files by user"""
-    basket = TeamScore.objects.filter(user__username=request.user.username)
+    user = request.user.username
+    if cache.get(user):
+        print("hit the cache")
+        basket = cache.get(user)
+    else:
+        basket = TeamScore.objects.filter(user__username=user)
+        cache.set(
+            user,
+            basket
+        )
+        print("hit the db")
+
     context = {
         'basket' : basket
     }
@@ -112,6 +134,7 @@ def deletefile(request, pk):
         """delete file uploaded and linked team score objects from file upload"""
         files = Files.objects.filter(pk=pk)
         files.delete()
+        cache.clear()
         return redirect('analytics')
 
 #view to compute the rank and points of team scores

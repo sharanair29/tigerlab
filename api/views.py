@@ -6,6 +6,7 @@ from rest_framework import serializers, viewsets
 from rest_framework.decorators import action
 import traceback
 import logging
+from django.core.cache import cache
 logging.basicConfig(filename="./log.txt", level=logging.DEBUG)
 
 
@@ -43,6 +44,7 @@ class RankViewSet(viewsets.ModelViewSet):
                 ]
         
             msg = TeamScore.objects.bulk_create(objs)
+            cache.clear()
             logging.info("Success no key error, " + f"Time : {timezone.now()}")
             print("posting works")
             return redirect('coreapp')
@@ -76,6 +78,7 @@ class RankViewSet(viewsets.ModelViewSet):
                     ]
             
                 msg = TeamScore.objects.bulk_create(objs)
+                cache.clear()
                 print("posting works")
                 return redirect('coreapp')
             except Exception as e:
