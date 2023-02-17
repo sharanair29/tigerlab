@@ -5,7 +5,7 @@ services:
         restart: unless-stopped
         image: redis:7.0.5-alpine 
         expose:
-            - 6379
+            - ${REDIS_PORT}
   db:
     image: postgres
     environment:
