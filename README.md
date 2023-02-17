@@ -170,5 +170,10 @@ Due to time constraints, I was not able to improvise on the data fetch event for
 Caching could be implemented for the dashboard page as well. Right now it is only implemented on the analytics page.
 
 
+<img width="1152" alt="editdata" src="https://user-images.githubusercontent.com/94154731/219814872-c5c0790a-d6fa-4bf4-8e09-5ea5874337af.png">
+<img width="1157" alt="confirmdelete" src="https://user-images.githubusercontent.com/94154731/219814895-d4a74ea9-785b-41e4-bde8-960cfac0cf3f.png">
+<img width="1155" alt="output" src="https://user-images.githubusercontent.com/94154731/219814903-72499363-49a8-4d0d-9ecc-e868391823e2.png">
+<img width="1159" alt="dashboard" src="https://user-images.githubusercontent.com/94154731/219814906-cb889473-77c4-40bc-89e9-d333f3ed84e7.png">
+<img width="1153" alt="addata" src="https://user-images.githubusercontent.com/94154731/219814908-073ddcaa-484a-411b-a83e-08bffbb06397.png">
 
 
