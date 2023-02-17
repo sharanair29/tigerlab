@@ -57,6 +57,7 @@ You should see a static folder in the root of your local repository
 Next, run all migrations to ensure your tables are created in the database which you connected to using your .env file setup.
 
 python manage.py makemigrations
+
 python manage.py migrate
 
 # Run app
