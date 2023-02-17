@@ -157,6 +157,10 @@ localhost:8000
 
 docker exec -t -i tigerlab-app /bin/bash
 
+To execute any commands to your docker container, for e.g. to create a superuser:
+
+docker-compose exec tigerlab python3 manage.py createsuperuser
+
 # Things that could be improved
 
 Due to time constraints, I was not able to improvise on the data fetch event for the dashboard page using htmx, right now it is triggered every 1 second to check for new file uploads. Ideally it should implement a data fetch on an event change like the analytics page does to reduce server load.
