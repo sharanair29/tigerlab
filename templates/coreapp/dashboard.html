@@ -43,7 +43,7 @@
 
       
         <br/>
-
+       
 
 
         <table class="table">
@@ -55,29 +55,16 @@
               <th scope="col">Points</th>
            
             </tr>
-          
 
-          <tbody>
-            {% for key,value in team_points.items %}
-            <tr>
-          
-              
-              <td>
-                {{ forloop.counter }}
-              </td>
-
-            
-              <td>{{ key }}</td>
-              <td>  
-                {{ value }}
-              </td>
-     
-
-            </tr>
-            {% endfor %}
-            </thead>
-          </tbody>
-
+            <tbody hx-trigger="every 1 s" hx-get="{% url 'ranks' %}" hx-target="this">
+              <tr>
+                <td class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </td>
+              </tr>
+            </tbody>
+    
+        
         </table>
   
     
@@ -86,8 +73,7 @@
     </div>
   
   </section>
-
-
+<script src="https://unpkg.com/htmx.org@1.6.1/dist/htmx.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 {% endblock %}

@@ -9,6 +9,7 @@ urlpatterns = [
     path('edit_data/<str:pk>', views.edit_data, name='edit_data'),
     path('addobj', views.addobj, name='addobj'),
     path('listteamscores', views.listteamscores, name='listteamscores'),
+    path('ranks', views.ranks, name='ranks'),
     path('deletefile/<str:pk>', views.deletefile, name='deletefile'),
 
 ]

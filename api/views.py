@@ -6,6 +6,12 @@ from rest_framework import serializers, viewsets
 from rest_framework.decorators import action
 import traceback
 
+#recents
+from rest_framework import status
+from rest_framework.response import Response
+import json
+# recent end
+
 from django.core.cache import cache
 
 import logging
@@ -62,7 +68,9 @@ class RankViewSet(viewsets.ModelViewSet):
             cache.clear()
             logging.info("Success no key error, " + f"Time : {timezone.now()}")
             print("posting works")
-            return redirect('coreapp')
+            return Response(status=status.HTTP_201_CREATED
+            )
+            # return redirect('coreapp')
         except KeyError as e:
             """
             In the even of a key error the input file has no headers so we will create one
@@ -96,7 +104,9 @@ class RankViewSet(viewsets.ModelViewSet):
                 bulk = TeamScore.objects.bulk_create(objs)
                 cache.clear()
                 print("posting works")
-                return redirect('coreapp')
+                return Response(status=status.HTTP_201_CREATED
+               )
+                # return redirect('coreapp')
             except Exception as e:
                 """
                 In the event that there is still an error it is safe to say the csv file is invalid 
