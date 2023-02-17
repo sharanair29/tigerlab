@@ -12,7 +12,7 @@ HTMX forms were implemented instead of standard Crispy forms to utilize immediat
 
 # Redis
 
-To start the webapp manually, please have a redis server runnning and check your port connection to make sure it matches with the configurations on the settings.py file under the Cache section.
+To start the webapp manually, please have a redis server runnning and check your port connection to make sure it matches with the configurations on the .env file under the Cache section.
 If you are on a mac you can use homebrew and run:
 
 brew install redis
