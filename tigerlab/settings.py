@@ -110,10 +110,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 #REDIS
 
+redis_host = config('REDIS_HOST')
+redis_port = config('REDIS_PORT')
+
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        "LOCATION": f"redis://{redis_host}:{redis_port}/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }

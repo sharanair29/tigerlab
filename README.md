@@ -24,7 +24,7 @@ Test your connection by keying in PING, you should receive PONG as an output.
 
 All sensitive information such as database password, secret keys and allowed hosts has been decoupled using python-decouple. These are stored in the .env file. Attached to this repository is a sample .env.example file, please rename this file to a .env file with your db parameters, secret key and allowed hosts.
 
-# To start the application
+# To start the application manually (for the Docker image build scroll to the end)
 
 Once redis is running, and a postgres db, db username and db password has been set up. Clone the repository and update the .env file with the appropriate settings, if you are in need of generating a secret key for the django web app you may retrieve one from : https://miniwebtool.com/django-secret-key-generator/
 
@@ -115,6 +115,34 @@ The API doesn't follow this structure to test the endpoint for csv uploads.
 # Jenkins File
 
 The attached Jenkinsfile assumes that there will be both a staging and production server assuming nginx and gunicorn will be used to serve the webapp.
+
+# Dockerfile
+
+To run the docker image of this application, install docker into your local environment>
+You may refer to their documentation : https://docs.docker.com/desktop/install/mac-install/
+
+Once you have docker installed, it is important that you the "DB_HOST" parameter on your .env file equal to "db". This is the name of the service for postgres on the docker-compose file.
+
+
+To build an image of the application run:
+
+
+docker compose build
+
+
+docker compose up -d
+
+
+docker-compose exec tigerlab python3 manage.py migrate
+
+
+You may view the application running on docker at: 
+
+localhost:8000
+
+# TO further check files within your docker container
+
+docker exec -t -i tigerlab-app /bin/bash
 
 # Things that could be improved
 
