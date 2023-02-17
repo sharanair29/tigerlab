@@ -35,6 +35,7 @@ Create a python3 virtual environment in the root directory of the application, i
 To create a virtual environment and activate it on a Mac:
 
 python3 -m venv ./venv
+
 source ./venv/bin/activate
 
 Once your virtual environment has been activated you may install all libraries and dependencies for this application from the requirements.txt file. 
