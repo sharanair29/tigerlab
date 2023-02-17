@@ -36,19 +36,19 @@ Create a python3 virtual environment in the root directory of the application, i
 
 To create a virtual environment and activate it on a Mac:
 
-python3 -m venv ./venv
+`python3 -m venv ./venv`
 
-source ./venv/bin/activate
+`source ./venv/bin/activate`
 
 Once your virtual environment has been activated you may install all libraries and dependencies for this application from the requirements.txt file. 
 
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 # Static files
 
 To ensure that your static files are collected and a static folder is created in the root of your application run:
 
-python manage.py collectstatic
+`python manage.py collectstatic`
 
 When prompted key in Y for "Yes"
 
@@ -58,21 +58,21 @@ You should see a static folder in the root of your local repository
 
 Next, run all migrations to ensure your tables are created in the database which you connected to using your .env file setup.
 
-python manage.py makemigrations
+`python manage.py makemigrations`
 
-python manage.py migrate
+`python manage.py migrate`
 
 # Create a superuser
 
 Run the following commands and input your desired username and password:
 
-python manage.py createsuperuser
+`python manage.py createsuperuser`
 
 # Run app
 
 You may now run:
 
-python manage.py runserver
+`python manage.py runserver`
 
 Hit Ctrl + C to stop your server from running the application locally.
 
@@ -80,7 +80,7 @@ In case you would like to get a view of how the application works from a mobile 
 
 On a mac get your ip address by running: 
 
-ipconfig getifaddr en0
+`ipconfig getifaddr en0`
 
 You should get your public IP address in this format : 
 
@@ -88,11 +88,11 @@ You should get your public IP address in this format :
 
 Now run the following command on your IP address at port 8000:
 
-python manage.py runserver 190.16x.7x.1xx:8000
+`python manage.py runserver 190.16x.7x.1xx:8000`
 
 Your phone or ipad should be connected to the same internet your laptop is connected to. You may view the app on your mobile browser using this link:
 
-190.16x.7x.1xx:8000
+`190.16x.7x.1xx:8000`
 
 # Logging
 
@@ -103,7 +103,7 @@ Refer to this for tracebacks should there be any errors with the core API to imp
 
 To run tests:
 
-python manage.py test
+`python manage.py test`
 
 Logging is also implemented for tests, the output can be found in testing.log. All test files are found in individual app folders, they were not compiled into a single folder due to time constraints. The tests are separated into 4 main classes for URLTests, ViewTests, ModelTests and FormTests as below:
 
@@ -134,34 +134,34 @@ Once you have docker installed, it is important that you change these
 parameters on your .env file to follow the name of the service for postgres and redis on the docker-compose file.
 
 
-DB_HOST=db
+`DB_HOST=db`
 
-REDIS_HOST=redis
+`REDIS_HOST=redis`
 
 
 To build an image of the application run:
 
 
-docker compose build
+`docker compose build`
 
 
-docker compose up -d
+`docker compose up -d`
 
 
-docker-compose exec tigerlab python3 manage.py migrate
+`docker-compose exec tigerlab python3 manage.py migrate`
 
 
 You may view the application running on docker at: 
 
-localhost:8000
+`localhost:8000`
 
 # TO further check files within your docker container
 
-docker exec -t -i tigerlab-app /bin/bash
+`docker exec -t -i tigerlab-app /bin/bash`
 
 To execute any commands to your docker container, for e.g. to create a superuser:
 
-docker-compose exec tigerlab python3 manage.py createsuperuser
+`docker-compose exec tigerlab python3 manage.py createsuperuser`
 
 # Things that could be improved
 
