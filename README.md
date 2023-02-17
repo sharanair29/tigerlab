@@ -12,7 +12,7 @@ HTMX forms were implemented instead of standard Crispy forms to utilize immediat
 
 # Redis
 
-To start the webapp, please have a redis server runnning and check your port connection to make sure it matches with the configurations on the settings.py file under the Cache section.
+To start the webapp manually, please have a redis server runnning and check your port connection to make sure it matches with the configurations on the settings.py file under the Cache section.
 If you are on a mac you can use homebrew and run:
 
 brew install redis
@@ -22,7 +22,7 @@ Test your connection by keying in PING, you should receive PONG as an output.
 
 # Postgres
 
-All sensitive information such as database password, secret keys and allowed hosts has been decoupled using python-decouple. These are stored in the .env file. Attached to this repository is a sample .env.example file, please rename this file to a .env file with your db parameters, secret key and allowed hosts.
+All sensitive information such as database password, secret keys and allowed hosts have been decoupled using python-decouple. These are stored in the .env file. Attached to this repository is a sample .env.example file, please rename this file to a .env file with your db parameters, secret key and allowed hosts.
 
 # To start the application manually (for the Docker image build scroll to the end)
 
