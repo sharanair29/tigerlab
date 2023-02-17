@@ -129,7 +129,7 @@ You may refer to their documentation : https://docs.docker.com/desktop/install/m
 # IMPORTANT for Docker Build
 
 Once you have docker installed, it is important that you change these 
-parameters on your .env file to follow name of the service for postgres and redis on the docker-compose file.
+parameters on your .env file to follow the name of the service for postgres and redis on the docker-compose file.
 
 
 DB_HOST=db
