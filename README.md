@@ -122,7 +122,8 @@ The attached Jenkinsfile assumes that there will be both a staging and productio
 
 # Dockerfile
 
-To run the docker image of this application, install docker into your local environment>
+To run the docker image of this application, install docker into your local environment
+
 You may refer to their documentation : https://docs.docker.com/desktop/install/mac-install/
 
 # IMPORTANT for Docker Build
