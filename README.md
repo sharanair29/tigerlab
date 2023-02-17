@@ -133,6 +133,7 @@ parameters on your .env file to follow the name of the service for postgres and 
 
 
 DB_HOST=db
+
 REDIS_HOST=redis
 
 
