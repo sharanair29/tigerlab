@@ -25,11 +25,18 @@ class RankViewSet(viewsets.ModelViewSet):
         paramFile = io.TextIOWrapper(file)
         portfolio1 = csv.DictReader(paramFile)
         list_of_dict = list(portfolio1)
+        """
+        save file uploaded to Files model which is Foreign Key mapped to the TeamScore Model
+        """
         create = Files.objects.create(user=request.user, file_uploaded=file)
         create.save()
         id = create.id
+        """
+        retrieve file object with id to save this file in the TeamScore Model in bulk import
+        """
         getFile = Files.objects.get(pk=id)
         try:
+            # with headers
             objs = [
                     TeamScore(
                     user = request.user,
@@ -43,25 +50,26 @@ class RankViewSet(viewsets.ModelViewSet):
                     for row in list_of_dict
                 ]
         
-            msg = TeamScore.objects.bulk_create(objs)
+            bulk = TeamScore.objects.bulk_create(objs)
             cache.clear()
             logging.info("Success no key error, " + f"Time : {timezone.now()}")
             print("posting works")
             return redirect('coreapp')
         except KeyError as e:
+            """
+            In the even of a key error the input file has no headers so we will create one
+            """
             try:
+                # No headers
                 print(traceback.format_exc())
                 logging.info("Success key fall back, " + f"Time : {timezone.now()}")
                 reader = csv.reader(open(getFile.file_uploaded.path,'r',  encoding='utf-8'))
                 listtest = list(reader)
-                headers = listtest.pop(0)
-                titles = headers[0].split(",")
+                titles = ["team_1 name", "team_1 score", "team_2 name", "team_2 score"]
                 final = []
                 
                 for l in listtest:
-                    x = l[0].split(", ")
-                
-                    d = {titles[0] : x[0], titles[1]  : x[1], titles[2]  : x[2], titles[3] : x[3]}
+                    d = {titles[0] : l[0], titles[1]  : l[1], titles[2]  : l[2], titles[3] : l[3]}
                     final.append(d)
 
                 objs = [
@@ -77,11 +85,16 @@ class RankViewSet(viewsets.ModelViewSet):
                         for row in final
                     ]
             
-                msg = TeamScore.objects.bulk_create(objs)
+                bulk = TeamScore.objects.bulk_create(objs)
                 cache.clear()
                 print("posting works")
                 return redirect('coreapp')
             except Exception as e:
+                """
+                In the event that there is still an error it is safe to say the csv file is invalid 
+                and formatted incorrectly. 
+                Hence, we will throw an error message and log the traceback
+                """
                 getFile.delete()
                 print(traceback.format_exc())
                 logging.debug(f"Invalid file, Time : {timezone.now()}")
