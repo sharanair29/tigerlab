@@ -2,6 +2,18 @@
 {% load static %}
 {% block content %}
 
+<style>
+  input[type=file] {
+  width: 350px;
+  max-width: 100%;
+  color: #444;
+  padding: 5px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #555;
+}
+</style>
+
 <section class="bg-light py-5 text-black">
     <div class="container">
       <div class="row text-center">
@@ -23,9 +35,9 @@
         <form action="../ranks/uploadfile/" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
        
-      <label for="file">Upload an Excel File : </label>
-        <input type="file" name="test" id="test" accept=".csv" class="btn"/> 
-        <input type="submit">
+        <input type="file" name="test" id="test" accept=".csv" class="file btn btn-block" required/> 
+        
+        <input type="submit" class="btn btn-block btn-primary">
         </form>
 
       

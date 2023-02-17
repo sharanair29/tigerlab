@@ -3125,3 +3125,29 @@ Traceback (most recent call last):
 IndexError: list index out of range
 
 INFO:root:Success key fall back, Time : 2023-02-17 05:59:05.659821+00:00
+ERROR:django.request:Internal Server Error: /ranks/uploadfile/
+Traceback (most recent call last):
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Users/aksharasadheesh/Desktop/tigerlab/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/aksharasadheesh/Desktop/tigerlab/api/views.py", line 25, in uploadfile
+    paramFile = io.TextIOWrapper(file)
+AttributeError: 'NoneType' object has no attribute 'readable'
+INFO:root:Success no key error, Time : 2023-02-17 06:09:40.385873+00:00
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:django.utils.autoreload:/Users/aksharasadheesh/Desktop/tigerlab/coreapp/views.py changed, reloading.
+INFO:root:Success no key error, Time : 2023-02-17 06:24:06.529060+00:00
