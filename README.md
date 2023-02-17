@@ -121,7 +121,14 @@ The attached Jenkinsfile assumes that there will be both a staging and productio
 To run the docker image of this application, install docker into your local environment>
 You may refer to their documentation : https://docs.docker.com/desktop/install/mac-install/
 
-Once you have docker installed, it is important that you the "DB_HOST" parameter on your .env file equal to "db". This is the name of the service for postgres on the docker-compose file.
+# IMPORTANT for Docker Build
+
+Once you have docker installed, it is important that you change these 
+parameters on your .env file to follow name of the service for postgres and redis on the docker-compose file.
+
+
+DB_HOST=db
+REDIS_HOST=redis
 
 
 To build an image of the application run:
