@@ -7,7 +7,7 @@ from rest_framework.decorators import action
 import traceback
 import logging
 from django.core.cache import cache
-logging.basicConfig(filename="./log.txt", level=logging.DEBUG)
+logging.basicConfig(filename="./logging.log", level=logging.DEBUG)
 
 
 # Serialize for data

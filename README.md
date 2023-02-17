@@ -88,7 +88,7 @@ Your phone or ipad should be connected to the same internet your laptop is conne
 
 # Logging
 
-This application also uses Python's default basicConfig logging, to log events for the API. You can find these outputs in the log.txt file generated.
+This application also uses Python's default basicConfig logging, to log events for the API. You can find these outputs in the logging.log file generated.
 
 
 
