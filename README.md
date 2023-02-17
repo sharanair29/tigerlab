@@ -103,8 +103,24 @@ To run tests:
 
 python manage.py test
 
-Logging is also implemented for tests, the output can be found in testing.log.
+Logging is also implemented for tests, the output can be found in testing.log. All test files are found in individual app folders, they were not compiled into a single folder due to time constraints. The tests are separated into 4 main classes for URLTests, ViewTests, ModelTests and FormTests as below:
 
+URL tests : TestURLs
+View tests : TestViews
+Model tests : TestModels
+Form tests : TestForms
+
+The API doesn't follow this structure to test the endpoint for csv uploads.
+
+# Jenkins File
+
+The attached Jenkinsfile assumes that there will be both a staging and production server assuming nginx and gunicorn will be used to serve the webapp.
+
+# Things that could be improved
+
+Due to time constraints, I was not able to improvise on the data fetch event for the dashboard page using htmx, right now it is triggered every 1 second to check for new file uploads. Ideally it should implement a data fetch on an event change like the analytics page does to reduce server load.
+
+Caching could be implemented for the dashboard page as well. Right now it is only implemented on the analytics page.
 
 
 

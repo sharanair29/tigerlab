@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - pgdb-data:/var/lib/postgresql/data
+
+  tigerlab:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    image: tigerlab-image
+    container_name: tigerlab-app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      
+volumes:
+  pgdb-data:
+    driver: local
+

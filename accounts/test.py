@@ -18,3 +18,6 @@ class TestUrls(SimpleTestCase):
         url = reverse("logout")
         logging.info(resolve(url))
         self.assertEquals(resolve(url).func, logout)
+
+class TestViews():
+    print("test")
