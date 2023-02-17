@@ -5,8 +5,10 @@ from django.contrib import messages
 from rest_framework import serializers, viewsets
 from rest_framework.decorators import action
 import traceback
-import logging
+
 from django.core.cache import cache
+
+import logging
 logging.basicConfig(filename="./logging.log", level=logging.DEBUG)
 
 

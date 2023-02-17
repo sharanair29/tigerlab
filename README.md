@@ -89,6 +89,16 @@ Your phone or ipad should be connected to the same internet your laptop is conne
 # Logging
 
 This application also uses Python's default basicConfig logging, to log events for the API. You can find these outputs in the logging.log file generated.
+Refer to this for tracebacks should there be any errors with the core API to import CSV files.
+
+# Tests
+
+To run tests:
+
+python manage.py test
+
+Logging is also implemented for tests, the output can be found in testing.log.
+
 
 
 
