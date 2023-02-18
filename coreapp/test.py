@@ -1,6 +1,8 @@
 from django.test import TestCase, SimpleTestCase
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.urls import reverse, resolve
 from .views import *
+from .models import *
 from django.test.client import RequestFactory
 from rest_framework import status
 from django.utils import timezone
@@ -88,7 +90,6 @@ class TestViewsCoreapp(TestCase):
         self.client.login(username='testuser', password='password')
         self.listteamscores = reverse('listteamscores')
         self.addobj = reverse('addobj')
-        self.deleteobj = reverse('deleteobj' , args=['some-pk'])
 
     """
     
@@ -120,3 +121,49 @@ class TestViewsCoreapp(TestCase):
         })
 
         self.assertEquals(response.status_code, 204)
+
+""""
+
+The following class TestModelsCoreapp is focused on testing Models
+within coreapp. We have the Files model and TeamScore model.
+
+"""
+
+class TestModelsCoreApp(TestCase):
+    """
+    
+    Set up a dummy user and login
+    since views are restricted to authenticated users
+    
+    """
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser', password='12345')
+        login = self.client.login(username='testuser', password='12345')
+        self.f = Files(user=self.user)
+        myfile = open('test.csv','rb')
+        self.f.file_uploaded = SimpleUploadedFile(
+            content=myfile.read(), name=myfile.name, content_type="multipart/form-data"
+            )
+        self.f.save()
+    def test_file_creation(self):
+        self.assertEquals(self.f.user.username, 'testuser')
+
+    def test_teamscore_creation(self):
+        self.user = User.objects.filter(username='testuser').first()
+        self.teamscore = TeamScore.objects.create(user=self.user, team_name_1='team1', 
+        team_score_1=3,team_name_2='team2',team_score_2=2)
+        self.assertEquals(self.teamscore.team_name_1,'team1')
+        
+
+ 
+
+
+  
+
+    
+
+
+
+
+
+
