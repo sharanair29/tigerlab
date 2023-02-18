@@ -10,7 +10,6 @@ logging.basicConfig(filename="./testing.log", level=logging.DEBUG)
 """
 
 The following class TestUrlsCoreapp is focused on testing URL paths
-within coreapp
 
 """
 
@@ -63,7 +62,6 @@ class TestUrlsCoreapp(SimpleTestCase):
 """"
 
 The following class TestViewsCoreapp is focused to testing views
-within the coreapp
 
 """
 
@@ -115,12 +113,6 @@ class TestViewsCoreapp(TestCase):
 
         self.assertEquals(response.status_code, 204)
 
-    """
-    
-    Test the ability to delete data as a Team Score Object
-    
-    """
-
     # def test_delete_team_score(self):
     #     test = TeamScore.objects.create(
     #         team_name_1 = "team name 1",
@@ -140,13 +132,4 @@ class TestViewsCoreapp(TestCase):
 
 # class TestModels(TestModels):
 # class TestForms(TestForms):
-    """
-    
-    Test the ability to edit data as a Team Score Object
-    
-    """
-
-    # def test_team_score_form(self):
-
-
     
