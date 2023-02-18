@@ -153,11 +153,22 @@ To execute any commands to your docker container, for e.g. to create a superuser
 
 `docker-compose exec tigerlab python3 manage.py createsuperuser`
 
+
+# TO stop your docker container
+
+The command below will stop the tigerlab-app container but will not remove the continer or the tigerlab image:
+
+`docker-compose stop`
+
+If you wish to stop and remove the container and image, run the command below:
+
+`docker-compose down`
+
 # Things that could be improved
 
 Due to time constraints, I was not able to improvise on the data fetch event for the dashboard page using htmx, right now it is triggered every 1 second to check for new file uploads. Ideally it should implement a data fetch on an event change like the analytics page does to reduce server load.
 
-Caching could be implemented for the dashboard page as well. Right now it is only implemented on the analytics page.
+Caching could be implemented for the dashboard page as well. Right now it is only implemented on the analytics page. More tests could be done.
 
 Dashboard for file submit, ranking, and points
 
