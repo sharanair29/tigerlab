@@ -61,7 +61,8 @@ class TestUrlsCoreapp(SimpleTestCase):
 
 """"
 
-The following class TestViewsCoreapp is focused to testing views
+The following class TestViewsCoreapp is focused on testing views
+within coreapp
 
 """
 
@@ -112,24 +113,3 @@ class TestViewsCoreapp(TestCase):
         })
 
         self.assertEquals(response.status_code, 204)
-
-    # def test_delete_team_score(self):
-    #     test = TeamScore.objects.create(
-    #         team_name_1 = "team name 1",
-    #         team_score_1 = 55,
-    #         team_name_2 = "team name 2",
-    #         team_score_2 = 66,
-    #     )
-    #     response = self.client.post(self.deleteobj)
-    #     self.assertEquals(response.status_code, 204)
-        
-
-    #test edit team score
-        
-
-
-
-
-# class TestModels(TestModels):
-# class TestForms(TestForms):
-    
