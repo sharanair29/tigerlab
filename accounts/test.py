@@ -90,7 +90,6 @@ class BaseTest(TestCase):
 class TestRegister(BaseTest):
     def test_can_view_page_correctly(self):
        response=self.client.get(self.register_url)
-    #    print(response)
        self.assertEqual(response.status_code,200)
        self.assertTemplateUsed(response,'accounts/index.html')
 
@@ -99,17 +98,17 @@ class TestRegister(BaseTest):
         self.assertEqual(response.status_code,200)
         self.assertTemplateUsed(response,'coreapp/dashboard.html')
 
-    def test_cant_register_user_with_unmatching_passwords(self):
+    def test_cannot_register_user_with_unmatching_passwords(self):
             response=self.client.post(self.register_url,self.user_unmatching_password,format='text/html')
             self.assertNotEquals(response.status_code,200)
             self.assertTemplateNotUsed(response)
 
-    def test_cant_register_user_with_invalid_email(self):
+    def test_cannot_register_user_with_invalid_email(self):
             response=self.client.post(self.register_url,self.user_invalid_email,format='text/html')
             self.assertNotEquals(response.status_code,200)
             self.assertTemplateNotUsed(response)
 
-    def test_cant_register_user_with_taken_email(self):
+    def test_cannot_register_user_with_taken_email(self):
             self.client.post(self.register_url,self.user,format='text/html')
             response=self.client.post(self.register_url,self.user,format='text/html')
             self.assertNotEquals(response.status_code,200)
