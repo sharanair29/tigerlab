@@ -67,7 +67,7 @@ class RankViewSet(viewsets.ModelViewSet):
             bulk = TeamScore.objects.bulk_create(objs)
             cache.clear()
             logging.info("Success no key error, " + f"Time : {timezone.now()}")
-            print("posting works")
+            print("posting csv file to API works")
             return Response(status=status.HTTP_201_CREATED
             )
             # return redirect('coreapp')
@@ -103,7 +103,7 @@ class RankViewSet(viewsets.ModelViewSet):
             
                 bulk = TeamScore.objects.bulk_create(objs)
                 cache.clear()
-                print("posting works")
+                print("posting csv file to API works")
                 return Response(status=status.HTTP_201_CREATED
                )
                 # return redirect('coreapp')

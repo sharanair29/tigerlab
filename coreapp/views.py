@@ -122,7 +122,7 @@ def listteamscores(request):
             user,
             basket
         )
-        print("hit the db")
+        print("hit the db for list of team scores")
 
     context = {
         'basket' : basket

@@ -20,6 +20,7 @@ from rest_framework import routers
 from django.conf import settings
 from django.conf.urls.static import static
 from api.views import RankViewSet
+from django.conf.urls import handler404, handler500, handler403
 
 router = routers.SimpleRouter()
 router.register("ranks", RankViewSet)
@@ -33,3 +34,7 @@ urlpatterns += [
     path(r'ranks', include('rest_framework.urls'))
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+handler404="accounts.views.handle_404"
+handler403="accounts.views.csrf_failure"
+handler500="accounts.views.handle_500"

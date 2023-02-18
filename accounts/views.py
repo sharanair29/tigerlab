@@ -98,9 +98,20 @@ def register(request):
                                 user.save()
                                 auth.login(request, user)
                                 messages.success(request, 'You are now registered and logged in!')
-                                return redirect('login')
+                                return render(request, 'coreapp/dashboard.html')
         else:
             messages.error(request, 'Passwords do not match')
             return redirect('index')
     else:
         return render(request, 'accounts/index.html')
+
+## This page is to be shown in the event of page crashes
+
+def handle_404(request, exception):
+    return render(request, 'accounts/helpers/notfound404.html', status=404)
+
+def handle_500(request,*args, **argv):
+    return render(request, 'accounts/helpers/notfound500.html', status=500)
+    
+def csrf_failure(request, *args, **argv):
+    return render(request, 'accounts/helpers/missingcsrf.html', status=403)
