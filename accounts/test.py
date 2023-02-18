@@ -2,8 +2,15 @@ from django.test import TestCase, SimpleTestCase, Client
 from django.urls import reverse, resolve
 from .views import *
 import logging
-logging.basicConfig(filename="./testing.log", level=logging.DEBUG)
 from django.utils import timezone
+
+"""
+
+Log events to testing.log file
+
+"""
+logging.basicConfig(filename="./testing.log", level=logging.DEBUG)
+
 
 
 """

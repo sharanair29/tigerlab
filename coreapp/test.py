@@ -5,6 +5,13 @@ from django.test.client import RequestFactory
 from rest_framework import status
 from django.utils import timezone
 import logging
+
+"""
+
+Log events to testing.log file
+
+"""
+
 logging.basicConfig(filename="./testing.log", level=logging.DEBUG)
 
 """

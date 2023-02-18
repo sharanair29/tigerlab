@@ -5,18 +5,38 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
 # Create your views here.
 
-# function to test if user is logged out or not
+""""
+
+In order to use the @user_passes_test decorator to restrict access to views
+depending on user authentication status. We need a custom function to test the
+authentitcation status and return a Boolean. This function basically says if
+user is logged in return False which means, they failed the test 
+to view url and will be redirected.
+
+"""
 def notloggedin(user):
     if user.is_authenticated:
         return False
     else:
         return True
 
+""""
 
-# only allow logged out users to view this page else redirect to dashboard page
+Only allow logged out users to view the home page else redirect to dashboard page named coreapp.
+This is restricted with the @user_passes_test decorator.
+
+"""
+
 @user_passes_test(notloggedin, login_url='coreapp')
 def index(request):
     return render(request, "accounts/index.html")
+
+""""
+
+Only allow logged out users to view the login page else redirect to dashboard page named coreapp.
+This is restricted with the @user_passes_test decorator.
+
+"""
 
 # only allow logged out users to view this page else redirect to dashboard page
 @user_passes_test(notloggedin, login_url='coreapp')
@@ -48,7 +68,14 @@ def logout(request):
         auth.logout(request)
         messages.success(request, 'You are logged out')
         return redirect('login')
-    
+
+"""
+
+The view which registers users on to the application. Email verification has yet to be implemented.
+Users who are logged in will not be able to see this page and register for an account. This is restricted
+with the @user_passes_test decorator.
+
+"""
     
 @user_passes_test(notloggedin, login_url='coreapp')
 def register(request):
@@ -105,7 +132,14 @@ def register(request):
     else:
         return render(request, 'accounts/index.html')
 
-## This page is to be shown in the event of page crashes
+
+
+"""
+
+These pages are to be shown in the event of page crashes with the following exceptions
+
+"""
+
 
 def handle_404(request, exception):
     return render(request, 'accounts/helpers/notfound404.html', status=404)

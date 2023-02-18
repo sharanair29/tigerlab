@@ -1,5 +1,4 @@
 import logging
-logging.basicConfig(filename="./testlogs/apitests.log", level=logging.DEBUG)
 from django.urls import reverse, resolve
 import csv, os
 from django.core.files.uploadedfile import SimpleUploadedFile
@@ -10,6 +9,16 @@ from rest_framework.test import APITestCase, APIClient
 from django.contrib.auth.models import User
 
 from datetime import timezone
+
+
+"""
+
+Log events to testing.log file
+
+"""
+
+logging.basicConfig(filename="testing.log", level=logging.DEBUG)
+
 
 """
 
