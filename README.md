@@ -90,7 +90,7 @@ Now run the following command on your IP address at port 8000:
 
 `python manage.py runserver 190.16x.7x.1xx:8000`
 
-Your phone or ipad should be connected to the same internet your laptop is connected to. You may view the app on your mobile browser using this link:
+Your phone or ipad should be connected to the same WiFi your laptop is connected to. You may view the app on your mobile browser using this link:
 
 `190.16x.7x.1xx:8000`
 
@@ -105,18 +105,8 @@ To run tests:
 
 `python manage.py test`
 
-Logging is also implemented for tests, the output can be found in testing.log. All test files are found in individual app folders, they were not compiled into a single folder due to time constraints. The tests are separated into 4 main classes for URLTests, ViewTests, ModelTests and FormTests as below:
+Logging is also implemented for tests, the output can be found in testing.log. All test files are found in individual app folders, they were not compiled into a single folder due to time constraints. 
 
-URL tests : TestURLs
-
-View tests : TestViews
-
-Model tests : TestModels
-
-Form tests : TestForms
-
-
-The API doesn't follow this structure to test the endpoint for csv uploads.
 
 # Jenkins File
 
