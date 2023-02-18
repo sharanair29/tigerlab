@@ -116,16 +116,19 @@ def listteamscores(request):
     if cache.get(user):
         print("hit the cache")
         basket = cache.get(user)
+        basketlen = len(basket)
     else:
         basket = TeamScore.objects.filter(user__username=user)
         cache.set(
             user,
             basket
         )
-        print("hit the db for list of team scores")
+        basketlen = len(basket)
+        print(f"hit the db for list of team scores {basketlen}")
 
     context = {
-        'basket' : basket
+        'basket' : basket,
+        'basketlen' : basketlen
     }
     return render(request, 'coreapp/listteamscores.html', context)
 

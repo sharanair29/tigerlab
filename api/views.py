@@ -67,13 +67,13 @@ class RankViewSet(viewsets.ModelViewSet):
             bulk = TeamScore.objects.bulk_create(objs)
             cache.clear()
             logging.info("Success no key error, " + f"Time : {timezone.now()}")
-            print("posting csv file to API works")
+         
             return Response(status=status.HTTP_201_CREATED
             )
-            # return redirect('coreapp')
+
         except KeyError as e:
             """
-            In the even of a key error the input file has no headers so we will create one
+            In the event of a key error the input file has no headers so we will create one
             """
             try:
                 # No headers
@@ -103,10 +103,11 @@ class RankViewSet(viewsets.ModelViewSet):
             
                 bulk = TeamScore.objects.bulk_create(objs)
                 cache.clear()
-                print("posting csv file to API works")
+                logging.info("Success after key error for no headers : " + f"{e} :Time : {timezone.now()}")
+               
                 return Response(status=status.HTTP_201_CREATED
                )
-                # return redirect('coreapp')
+
             except Exception as e:
                 """
                 In the event that there is still an error it is safe to say the csv file is invalid 
@@ -115,7 +116,7 @@ class RankViewSet(viewsets.ModelViewSet):
                 """
                 getFile.delete()
                 print(traceback.format_exc())
-                logging.debug(f"Invalid file, Time : {timezone.now()}")
+                logging.debug(f"Invalid file : {e} : Time : {timezone.now()}")
                 logging.debug(traceback.format_exc())
                 messages.error(request, "Csv file is invalid")
                 return redirect('coreapp')

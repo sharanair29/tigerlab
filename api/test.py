@@ -1,6 +1,6 @@
 import logging
 logging.basicConfig(filename="./testlogs/apitests.log", level=logging.DEBUG)
-
+from django.urls import reverse, resolve
 import csv, os
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test.client import RequestFactory
@@ -34,16 +34,69 @@ class API_DRF_Test(APITestCase):
     status code 201.
     
     """
-    def test_csv_upload_success(self):
+    # with headers
+
+    def test_csv_upload_success_with_headers(self):
         url = '/ranks/uploadfile/'
-        myfile = open('test.csv','rb')
-        data = SimpleUploadedFile(
-        content=myfile.read(), name=myfile.name, content_type="multipart/form-data"
+        file_name = "testwithheaders.csv"
+        # Open file in write mode (Arrange)
+        with open(file_name, "w") as file:
+            writer = csv.writer(file)
+            # Add some rows in csv file
+            writer.writerow(["team_1 name", "team_1 score", "team_2 name", "team_2 score"])
+            writer.writerow(["Crazy Ones", 3, "Rebels", 3])
+            writer.writerow(
+                ["Fantastics", 28748, "Rebels", 1],
             )
-        response = self.client.post(url, {'test':myfile}, format="multipart")
+            writer.writerow(
+                ["Crazy Ones", 2381741, "Rebels", 78],
+            )
+            writer.writerow(
+                ["Andorra", 468, "AD", 90],
+            )
+        # open file in read mode
+        data = open(file_name, "rb")
+        # Create a simple uploaded file
+        data = SimpleUploadedFile(
+            content=data.read(), name=data.name, content_type="multipart/form-data"
+        )
+       
+        response = self.client.post(url, {'test':data}, format="multipart")
         logging.info(f"Test API CSV UPLOAD : RESPONSE STATUS CODE : {response.status_code}")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        os.remove(file_name)
         
+
+    # without headers    
+
+    def test_csv_upload_success_without_headers(self):
+        url = '/ranks/uploadfile/'
+        file_name = "testwithoutheaders.csv"
+        # Open file in write mode (Arrange)
+        with open(file_name, "w") as file:
+            writer = csv.writer(file)
+            # Add some rows in csv file
+            writer.writerow(["Crazy Ones", 3, "Rebels", 3])
+            writer.writerow(
+                ["Fantastics", 28748, "Rebels", 1],
+            )
+            writer.writerow(
+                ["Crazy Ones", 2381741, "Rebels", 78],
+            )
+            writer.writerow(
+                ["Andorra", 468, "AD", 90],
+            )
+        # open file in read mode
+        data = open(file_name, "rb")
+        # Create a simple uploaded file
+        data = SimpleUploadedFile(
+            content=data.read(), name=data.name, content_type="multipart/form-data"
+        )
+       
+        response = self.client.post(url, {'test':data}, format="multipart")
+        logging.info(f"Test API CSV UPLOAD : RESPONSE STATUS CODE : {response.status_code}")
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        os.remove(file_name)
 
 # No models to test
 # No forms to test
