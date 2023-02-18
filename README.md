@@ -156,7 +156,7 @@ To execute any commands to your docker container, for e.g. to create a superuser
 
 # TO stop your docker container
 
-The command below will stop the tigerlab-app container but will not remove the continer or the tigerlab image:
+The command below will stop the tigerlab-app container but will not remove the container or the tigerlab image built from your build command previously:
 
 `docker-compose stop`
 
