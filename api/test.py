@@ -11,6 +11,15 @@ from django.contrib.auth.models import User
 
 from datetime import timezone
 
+"""
+
+Test ability to post csv file to the API endpoint and generate Team Score Objects.
+Within out RankViewSet class in api.views.py we have stated that on success
+return a Response with a status code of 201, hence the assertion is set equal to 
+status code 201.
+
+"""
+
 class API_DRF_Test(APITestCase):
     """
 
@@ -26,15 +35,13 @@ class API_DRF_Test(APITestCase):
         request.user = self.user
         self.client.login(username='testuser', password='password')
 
+
+  
     """
 
-    Test ability to post csv file to the API endpoint and generate Team Score Objects.
-    Within out RankViewSet class in api.views.py we have stated that on success
-    return a Response with a status code of 201, hence the assertion is set equal to 
-    status code 201.
-    
+    Test csv upload success for files with headers
+
     """
-    # with headers
 
     def test_csv_upload_success_with_headers(self):
         url = '/ranks/uploadfile/'
@@ -67,7 +74,12 @@ class API_DRF_Test(APITestCase):
         os.remove(file_name)
         
 
-    # without headers    
+    """
+
+    Test csv upload success for files without headers as sample input 
+    in assignment pdf suggests
+
+    """  
 
     def test_csv_upload_success_without_headers(self):
         url = '/ranks/uploadfile/'
@@ -98,8 +110,7 @@ class API_DRF_Test(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         os.remove(file_name)
 
-# No models to test
-# No forms to test
+
 
 """
 We don't have any models or forms listed within the api application.
