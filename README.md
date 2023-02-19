@@ -172,6 +172,8 @@ Due to time constraints, I was not able to improvise on the data fetch event for
 
 Caching could be implemented for the dashboard page as well. Right now it is only implemented on the analytics page. More tests could be done.
 
+On the OUTPUT page and DASHBOARD PAGE, if a huge amount of data is loaded the tables will be an endless scroll with data lag, it is best to implement Pagination should there be a huge amount of data uploads, the pagination can be implemented in pages or an infinite scroll with AJAX calling on data as the user scrolls instead of a one time data dump.
+
 Dashboard for file submit, ranking, and points
 
 <img width="1159" alt="dashboard" src="https://user-images.githubusercontent.com/94154731/219814906-cb889473-77c4-40bc-89e9-d333f3ed84e7.png">
