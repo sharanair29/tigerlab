@@ -86,6 +86,8 @@ You should get your public IP address in this format :
 
 190.16x.7x.1xx
 
+Add this IP address to your ALLOWED_HOSTS in your .env file.
+
 Now run the following command on your IP address at port 8000:
 
 `python manage.py runserver 190.16x.7x.1xx:8000`
