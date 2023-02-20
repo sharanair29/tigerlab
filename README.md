@@ -166,6 +166,18 @@ If you wish to stop and remove the container and image, run the command below:
 
 `docker-compose down`
 
+If you have previously started the container without specifing the environment variables,
+volumes would be created for the default postgres db and your .env file will be skipped, to fix this
+remove the volumes attached to your tigerlab image
+
+TO remove all volumes:
+
+`docker volume rm $(docker volume ls -q)`
+
+TO remove a specific volume:
+
+`docker volume rm $(volumename)`
+
 # Things that could be improved
 
 Due to time constraints, I was not able to improvise on the data fetch event for the dashboard page using htmx, right now it is triggered every 1 second to check for new file uploads. Ideally it should implement a data fetch on an event change like the analytics page does to reduce server load.
