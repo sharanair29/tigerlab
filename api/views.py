@@ -117,6 +117,6 @@ class RankViewSet(viewsets.ModelViewSet):
                 logging.debug(f"Invalid file : {e} : Time : {timezone.now()}")
                 logging.debug(traceback.format_exc())
                 messages.error(request, "Csv file is invalid")
-                return redirect('coreapp', contex={'status' : 'failed'})
+                return redirect('coreapp')
 
 
