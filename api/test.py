@@ -79,7 +79,7 @@ class API_DRF_Test(APITestCase):
        
         response = self.client.post(url, {'test':data}, format="multipart")
         logging.info(f"Test API CSV UPLOAD : RESPONSE STATUS CODE : {response.status_code}")
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.status_code, status.HTTP_302_FOUND)
         os.remove(file_name)
         
 
@@ -116,7 +116,7 @@ class API_DRF_Test(APITestCase):
        
         response = self.client.post(url, {'test':data}, format="multipart")
         logging.info(f"Test API CSV UPLOAD : RESPONSE STATUS CODE : {response.status_code}")
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.status_code, status.HTTP_302_FOUND)
         os.remove(file_name)
 
 

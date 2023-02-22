@@ -68,8 +68,7 @@ class RankViewSet(viewsets.ModelViewSet):
             cache.clear()
             logging.info("Success no key error, " + f"Time : {timezone.now()}")
          
-            return Response(status=status.HTTP_201_CREATED
-            )
+            return redirect('coreapp')
 
         except KeyError as e:
             """
@@ -105,8 +104,7 @@ class RankViewSet(viewsets.ModelViewSet):
                 cache.clear()
                 logging.info("Success after key error for no headers : " + f"{e} :Time : {timezone.now()}")
                
-                return Response(status=status.HTTP_201_CREATED
-               )
+                return redirect('coreapp')
 
             except Exception as e:
                 """
@@ -119,6 +117,6 @@ class RankViewSet(viewsets.ModelViewSet):
                 logging.debug(f"Invalid file : {e} : Time : {timezone.now()}")
                 logging.debug(traceback.format_exc())
                 messages.error(request, "Csv file is invalid")
-                return redirect('coreapp')
+                return redirect('coreapp', contex={'status' : 'failed'})
 
 
